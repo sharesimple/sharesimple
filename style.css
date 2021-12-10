@@ -1,0 +1,78 @@
+/* Import the font "Dosis" that's used */
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap');
+body {
+    font-family: Dosis;
+    background-color: #282c36;
+    transform: 10s;
+}
+
+
+/* header */
+
+h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+
+#code {
+    color: #ff0000;
+}
+
+
+/* menu */
+
+#choose {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 #000;
+    margin: 100px auto;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#auswaehlen {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu_buttton,
+input {
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    margin: 5px;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+    border-radius: 15px;
+}
+
+#other_page {
+    cursor: pointer;
+    color: #3274d6;
+    padding-top: 15px;
+}
+
+
+/* Theme switcher */
+
+#themeToggleButton {
+    color: var(--font-color);
+    background: var(--color-primary);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#themeButton {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}

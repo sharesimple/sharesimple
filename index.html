@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sharesimple</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Theme button -->
+    <div id="themeButton">
+        <button id="themeToggleButton" onclick="toggleTheme()">Darkmode/Lightmode</button>
+    </div>
+
+    <div id="choose">
+        <!-- Header -->
+        <h1>Was möchtest du tun?</h1>
+
+        <!-- The menu -->
+        <div id="auswaehlen">
+            <!-- Username field -->
+            <span class="menu_buttton" onclick='window.location.assign("download.html")'>Datei herunterladen</span>
+
+            <!-- Password field -->
+            <span class="menu_buttton" onclick='window.location.assign("upload.html")'>Datei hochladen</span>
+
+            <!-- Password field -->
+            <span class="menu_buttton" onclick='window.location.assign("help.html")'>Hilfe</span>
+        </div>
+    </div>
+
+    <!-- Load all needed scripts -->
+    <script src="themes.js"></script>
+</body>
+
+</html>
