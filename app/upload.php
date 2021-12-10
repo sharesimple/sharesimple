@@ -1,5 +1,8 @@
 <?php
 
+    // Maximum upload file size
+    $max_size = 1610612736; // 1,5 GB
+
     // Create a password
     $password = substr(str_shuffle("0123456789"), 0, 4);
 
@@ -43,7 +46,7 @@
     }
 
     // Check if file is bigger than 1.5GB
-    if ($_FILES["fileToUpload"]["size"] > 1610612736) {
+    if ($_FILES["fileToUpload"]["size"] > $max_size) {
         header('Location: message.html?message=""&showReportButton=true&passcode="Deine%20Datei%20ist%20zu%20gross."&file=""');
         $uploadOk = 0;
     }
