@@ -1,0 +1,18 @@
+{
+  "name": "sharesimple_deleter_script",
+  "version": "1.0.0",
+  "description": "Ein Skript, welches nicht mehr benötigte Dateien löscht",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/cuzimbisonratte/sharesimple"
+  },
+  "author": "CuzImBisonratte",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
