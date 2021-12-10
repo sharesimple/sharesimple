@@ -1,6 +1,8 @@
 # Sharesimple 
 Eine website, mithilfe der Dateien auf den Server hochgeladen werden können.
 
+<br>  
+
 # Maximale Dateigröße einstellen
 In der PHP-Konfigurationsdatei (php.ini) unter den Werten  
 **post_max_size** und **upload_max_filesize** den Maximalwert eintragen.  
