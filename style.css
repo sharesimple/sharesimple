@@ -4,7 +4,7 @@
 body {
     font-family: Dosis;
     background-color: #282c36;
-    transform: 10s;
+    transition: 0.75s;
 }
 
 
