@@ -38,7 +38,8 @@ h1 {
     margin: auto;
 }
 
-#installation form input {
+#installation form input,
+button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
