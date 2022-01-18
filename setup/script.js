@@ -52,8 +52,26 @@ function createDatabases() {
 
 function finishInstall() {
 
-    // Redirect to finished.html
-    window.location.href = "finished.html";
+    // Run the script rewriteIndex.php
+    $.ajax({
+        url: "rewriteIndex.php",
+        type: "POST",
+        data: {},
+        success: function(data) {
+
+            // If the script returns an error, show it
+            if (data.indexOf("error") >= 0) {
+                $("#step1_error").html(data);
+                $("#step1_error").show();
+            }
+            // If the script returns success, go to the next step
+            else {
+
+                // Redirect to finished.html
+                window.location.href = "finished.html";
+            }
+        }
+    });
 }
 
 function adminPanel() {
