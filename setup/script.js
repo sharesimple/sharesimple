@@ -55,3 +55,14 @@ function finishInstall() {
     // Redirect to finished.html
     window.location.href = "finished.html";
 }
+
+function adminPanel() {
+
+    // Redirect to ../admin/
+    window.location.href = "../admin/";
+}
+
+function start() {
+    // Redirect to ../
+    window.location.href = "../";
+}
