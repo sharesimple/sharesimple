@@ -43,8 +43,8 @@ function createDatabases() {
             // If the script returns success, go to the next step
             else {
 
-                // Redirect to step2.html
-                window.location.href = "step2.html";
+                // Redirect to step3.html
+                window.location.href = "step3.html";
             }
         }
     });
