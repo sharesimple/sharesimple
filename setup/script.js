@@ -49,3 +49,9 @@ function createDatabases() {
         }
     });
 }
+
+function finishInstall() {
+
+    // Redirect to finished.html
+    window.location.href = "finished.html";
+}
