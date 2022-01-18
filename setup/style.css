@@ -1,0 +1,50 @@
+/* Import the font "Dosis" that's used */
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap');
+:root {
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+}
+
+html {
+    background-color: var(--color-primary);
+}
+
+body {
+    font-family: Dosis;
+    transition: 0.75s;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#installation {
+    margin: auto;
+    margin-top: 15vh;
+    width: 50vw;
+    height: 50vh;
+    text-align: center;
+}
+
+#installation form {
+    text-align: left;
+    width: 75%;
+    margin: auto;
+}
+
+#installation form input,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid var(--color-secondary);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
