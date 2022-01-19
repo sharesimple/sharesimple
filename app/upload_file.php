@@ -17,9 +17,6 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Select the database
-    $conn->select_db($db_name);
-
     // Get the file name and type
     $file_name = $_FILES['file']['name'];
     $file_type = $_FILES['file']['type'];
