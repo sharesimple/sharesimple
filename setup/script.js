@@ -43,8 +43,8 @@ function createDatabases() {
             // If the script returns success, go to the next step
             else {
 
-                // Redirect to step2.html
-                window.location.href = "step2.html";
+                // Redirect to step3.html
+                window.location.href = "step3.html";
             }
         }
     });
@@ -83,4 +83,52 @@ function adminPanel() {
 function start() {
     // Redirect to ../
     window.location.href = "../";
+}
+
+function full_uninstall() {
+
+    // Run the script uninstall.php
+    $.ajax({
+        url: "uninstall.php",
+        type: "POST",
+        data: {},
+        success: function(data) {
+
+            // If the script returns an error, show it
+            if (data.indexOf("error") >= 0) {
+                $("#step1_error").html(data);
+                $("#step1_error").show();
+            }
+            // If the script returns success, go to the next step
+            else {
+
+                alert("Everything has now been deleted. You can now delete the folder 'setup'");
+            }
+        }
+    });
+}
+
+function erase_data() {
+
+    // Run the script eraseData.php
+    $.ajax({
+        url: "eraseData.php",
+        type: "POST",
+        data: {},
+        success: function(data) {
+
+            // If the script returns an error, show it
+            if (data.indexOf("error") >= 0) {
+                $("#step1_error").html(data);
+                $("#step1_error").show();
+            }
+            // If the script returns success, go to the next step
+            else {
+
+                // Redirect to finished.html
+                window.location.href = "finished.html";
+            }
+        }
+    });
+
 }

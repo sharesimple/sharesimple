@@ -24,6 +24,10 @@ h1 {
     margin-bottom: 0;
 }
 
+.small_form {
+    width: 35% !important;
+}
+
 #installation {
     margin: auto;
     margin-top: 15vh;
@@ -47,4 +51,5 @@ button {
     border-bottom: 1px solid var(--color-secondary);
     background-color: var(--color-primary);
     color: var(--color-secondary);
+    cursor: pointer;
 }
