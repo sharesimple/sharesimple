@@ -21,5 +21,6 @@
         ".wav"
     ],
     "allow_all_file_types": true,
-    "automated_virusscan": false
+    "automated_virusscan": false,
+    "always_need_password": false
 }
