@@ -27,9 +27,10 @@
 
     // Get password from the form
     // If the password is empty, set it to NULL
-    $password = $_POST['password'];
-    if (empty($password)) {
+    if (empty($_POST['password'])) {
         $password = NULL;
+    } else {
+        $password = $_POST['password'];
     }
 
     // Check if the setting "allow_all_file_types" is set to true
