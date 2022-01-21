@@ -45,51 +45,58 @@
             // Check if the file size is allowed
             if ($file_size <= $max_file_size) {
 
-                // Create a new entry in the database
-                // Prepare the query
-                $query = "INSERT INTO files (file_name, file_size, password) VALUES (?, ?, ?)";
+                // Check if file name length is allowed
+                if(strlen($file_name) <= $settings['max_file_name_length']) {
 
-                // Prepare the statement
-                $stmt = $conn->prepare($query);
-
-                // Bind the parameters
-                $stmt->bind_param("sds", $file_name, $file_size, $password);
-
-                // Execute the statement
-                $stmt->execute();
-
-                // Get the file id
-                $file_id = $stmt->insert_id;
-
-                // Close the statement
-                $stmt->close();
-
-                // Move the file from cache to the uploads folder
-                // Upload the file to ../files/ directory with the file id as the name and the file type as the extension
-                move_uploaded_file($_FILES['file']['tmp_name'], "../files/".$file_id.".".$file_type);
-
-                // Finish the database entry
-                // Prepare the query to update the "upload_finished" column in the "files" table
-                $query = "UPDATE files SET upload_finished = 1 WHERE id = ?";
-
-                // Prepare the statement
-                $stmt = $conn->prepare($query);
-
-                // Bind the parameters
-                $stmt->bind_param("i", $file_id);
-
-                // Execute the statement
-                $stmt->execute();
-
-                // Close the statement
-                $stmt->close();
-
-                // Close the connection
-                $conn->close();
-
-                // Exit the script
-                // Return the file id
-                exit($file_id);
+                    // Create a new entry in the database
+                    // Prepare the query
+                    $query = "INSERT INTO files (file_name, file_size, password) VALUES (?, ?, ?)";
+    
+                    // Prepare the statement
+                    $stmt = $conn->prepare($query);
+    
+                    // Bind the parameters
+                    $stmt->bind_param("sds", $file_name, $file_size, $password);
+    
+                    // Execute the statement
+                    $stmt->execute();
+    
+                    // Get the file id
+                    $file_id = $stmt->insert_id;
+    
+                    // Close the statement
+                    $stmt->close();
+    
+                    // Move the file from cache to the uploads folder
+                    // Upload the file to ../files/ directory with the file id as the name and the file type as the extension
+                    move_uploaded_file($_FILES['file']['tmp_name'], "../files/".$file_id.".".$file_type);
+    
+                    // Finish the database entry
+                    // Prepare the query to update the "upload_finished" column in the "files" table
+                    $query = "UPDATE files SET upload_finished = 1 WHERE id = ?";
+    
+                    // Prepare the statement
+                    $stmt = $conn->prepare($query);
+    
+                    // Bind the parameters
+                    $stmt->bind_param("i", $file_id);
+    
+                    // Execute the statement
+                    $stmt->execute();
+    
+                    // Close the statement
+                    $stmt->close();
+    
+                    // Close the connection
+                    $conn->close();
+    
+                    // Exit the script
+                    // Return the file id
+                    exit($file_id);
+                } else {
+                    // Alert the user that the file name is too long
+                    exit("FNTL"); // FNTL = File Name Too Long
+                }	
 
             } else {
 
