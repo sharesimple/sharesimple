@@ -1,118 +1,140 @@
 <?php 
+
+    // Start sessions
+    session_start();
+
+    // Functions to generate an pseudo-random ID
+    function generateID($length){
+        $id_charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123465789";
+        $generated = "";
+        for ($i=0; $i < $length; $i++) { 
+            $new_char = substr($id_charset, mt_rand(0, strlen($id_charset)-1),1);
+            $generated .= $new_char;
+        }
+        return $generated;
+    }
+
     // Get the database connection credentials
     require_once '../config/database.php';
+
+    // Connect to the database
+    $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    if (mysqli_connect_errno()) {
+        exit("An error occured, trying to connect to the database");
+    } 
     
     // Get and decode the json file ../config/settings.json
     $settings = json_decode(file_get_contents('../config/settings.json'), true);
 
-    // Get the "max_file_size" setting and convert it to a number (it's in gigabytes)
+    // Get all settings
     $max_file_size = $settings['max_file_size'];
-    $max_file_size = (int) $max_file_size;
+    $max_file_name_length = $settings['max_file_name_length'];
+    $allowed_file_types = $settings['allowed_file_types'];
+    $allow_all_file_types = $settings['allow_all_file_types'];
 
-    // Connect to the database
-    $conn = new mysqli($db_host, $db_user, $db_pass);
+    // Convert max file size to bytes
+    $max_file_size = $max_file_size * 1000000;
+    
+    // Check if the server has received files
+    if ($_SERVER ["REQUEST_METHOD"] === "POST") {
 
-    // Check if the connection was successful
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+        // check if there are files
+        if (isset($_FILES['upload_file'])) {
 
-    // Get the file name and type
-    $file_name = $_FILES['file']['name'];
-    $file_type = $_FILES['file']['type'];
+            // Get the file name
+            $file_name = $_FILES['upload_file']['name'];
 
-    // Get the file size in gigabytes
-    $file_size = $_FILES['file']['size'];
-    $file_size = $file_size / (1024 * 1024 * 1024);
+            // Get the temp file
+            $file_tmp = $_FILES['upload_file']['tmp_name'];
 
-    // Get password from the form
-    // If the password is empty, set it to NULL
-    if (empty($_POST['password'])) {
-        $password = NULL;
-    } else {
-        $password = $_POST['password'];
-    }
+            // Get the file type
+            $file_type = $_FILES['upload_file']['type'];
 
-    // Check if the setting "allow_all_file_types" is set to true
-    if ($settings['allow_all_file_types'] == true) {
-        // If true, then allow all file types
-        // So don't do anything here
-    } else {
-        
-        // Check if the file type is allowed
-        if (in_array($file_type, $settings['allowed_file_types'])) {
+            // Get the file size
+            $file_size = $_FILES['upload_file']['size'];
 
-            // Check if the file size is allowed
-            if ($file_size <= $max_file_size) {
+            // Get the file extension
+            $explode_var = explode('.', $file_name);
+            $file_ext = strtolower(end($explode_var));
 
-                // Check if file name length is allowed
-                if(strlen($file_name) <= $settings['max_file_name_length']) {
+            // Check if file exceeds max file size
+            if($file_size > $max_file_size){
 
-                    // Create a new entry in the database
-                    // Prepare the query
-                    $query = "INSERT INTO files (file_name, file_size, password) VALUES (?, ?, ?)";
-    
-                    // Prepare the statement
-                    $stmt = $conn->prepare($query);
-    
-                    // Bind the parameters
-                    $stmt->bind_param("sds", $file_name, $file_size, $password);
-    
-                    // Execute the statement
-                    $stmt->execute();
-    
-                    // Get the file id
-                    $file_id = $stmt->insert_id;
-    
-                    // Close the statement
-                    $stmt->close();
-    
-                    // Move the file from cache to the uploads folder
-                    // Upload the file to ../files/ directory with the file id as the name and the file type as the extension
-                    move_uploaded_file($_FILES['file']['tmp_name'], "../files/".$file_id.".".$file_type);
-    
-                    // Finish the database entry
-                    // Prepare the query to update the "upload_finished" column in the "files" table
-                    $query = "UPDATE files SET upload_finished = 1 WHERE id = ?";
-    
-                    // Prepare the statement
-                    $stmt = $conn->prepare($query);
-    
-                    // Bind the parameters
-                    $stmt->bind_param("i", $file_id);
-    
-                    // Execute the statement
-                    $stmt->execute();
-    
-                    // Close the statement
-                    $stmt->close();
-    
-                    // Close the connection
-                    $conn->close();
-    
-                    // Exit the script
-                    // Return the file id
-                    exit($file_id);
-                } else {
-                    // Alert the user that the file name is too long
-                    exit("FNTL"); // FNTL = File Name Too Long
-                }	
-
-            } else {
-
-                // Alert the user that the file type is not allowed
-                exit("FSTB"); // FSTB = File Size Too Big
+                exit("The file is too big");
             }
 
+            // Check if all file types are allowed
+            if(!$allow_all_file_types){
+
+                // Check if the file type is allowed
+                if (!in_array($file_ext, $allowed_file_types)) {
+                    
+                    exit("That file type is not supported");
+                }
+            }
+
+            // Check if file name is to long
+            if(strlen($file_name) > $max_file_name_length){
+
+                exit("That file name is too long");
+            }
+
+            // Check if id is already taken
+            $checking_id_double = true;
+            while($checking_id_double){
+                    
+                $new_id = generateID(4);
+                if ($stmt = $con->prepare("SELECT * FROM files WHERE id = ?")) {
+                    $stmt->bind_param('s', $new_id);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        // Do nothing (this will repeat the process) 
+                    } else {
+
+                        // Close the statement
+                        $stmt->close();
+
+                        // Reset id checking var
+                        $checking_id_double = false;
+
+                        echo ($new_id);
+
+                        // Generate a new password
+                        $password = generateID(3);
+
+                        // Insert file into db
+                        if($stmt = $con->prepare("INSERT INTO `files` (id, name, extension, password) VALUES (?, ?, ?, ?) ")){
+                            $stmt->bind_param('ssss', $new_id, $file_name, $file_ext, $password);
+                            $stmt->execute();
+                        }
+
+                        // Make id directory
+                        mkdir("../files/".$new_id);
+
+                        // Move file
+                        move_uploaded_file($file_tmp, "../files/".$new_id . "/" .$file_name);
+            
+                        // Debug message
+                        echo $file_name . " with extension " . $file_ext . " is type " . $file_type . ", it is ". $file_size . " big and saved temporarily under ". $file_tmp;
+
+                        // Save informations to session
+                        $_SESSION['last_file_id'] = $new_id;
+                        $_SESSION['last_file_password'] = $password;
+
+                        // Redirect to next page
+                        header("Location: ./uploaded.php");
+                    }
+                }
+            }
 
         } else {
 
-            // Alert the user that the file type is not allowed
-            exit("FTNA"); //FTNA = File Type Not Allowed
+            exit("No files received");
         }
+    } else {
 
+        exit("No files can be recieved currently");
     }
-
-
-
 ?>
