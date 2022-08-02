@@ -176,6 +176,18 @@ li i {
     margin: 0.05rem;
 }
 
+.button_purple {
+    background-color: #8800ff;
+    color: #ffffff;
+    border: 0px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0.05rem;
+    width: 2rem;
+}
+
 
 /* 
 Allowed files

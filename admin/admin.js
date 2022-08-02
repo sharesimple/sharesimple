@@ -16,3 +16,22 @@ function delete_button(this_element) {
         }
     });
 }
+
+// Function to add a file extension
+function addFileExtension() {
+    // Prompt for file extension
+    file_extension = prompt("File extension");
+    file_extension = file_extension.replace(".", "");
+    // Run the script add_extension.php
+    $.ajax({
+        url: "add_extension.php",
+        type: "POST",
+        data: {
+            extension: file_extension
+        },
+        success: function(data) {
+            console.log(data);
+            location.reload();
+        }
+    });
+}

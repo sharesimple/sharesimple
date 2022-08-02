@@ -74,6 +74,9 @@
                                 echo("<button onclick='delete_button(this);' class='button_active'>$value</button>");
                             }
                         ?>
+                        <button onclick="addFileExtension()" class="button_purple">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
                     </p>
                 </div>
             </div>
