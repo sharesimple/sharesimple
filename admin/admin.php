@@ -1,3 +1,14 @@
+<?php 
+    
+    // Get and decode the json file ../config/settings.json
+    $settings = json_decode(file_get_contents('../config/settings.json'), true);
+
+    // Get all settings
+    $max_file_size = $settings['max_file_size'];
+    $max_file_name_length = $settings['max_file_name_length'];
+    $allowed_file_types = $settings['allowed_file_types'];
+    $allow_all_file_types = $settings['allow_all_file_types'];
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -69,7 +80,11 @@
                         <span>Erlaubte Dateiendungen</span>
                         <br>
                         <br>
-
+                        <?php 
+                            foreach ($allowed_file_types as $key => $value) {
+                                echo("<button onclick='delete_button(this);' class='button_active'>$value</button>");
+                            }
+                        ?>
                     </p>
                 </div>
             </div>
