@@ -34,17 +34,6 @@
     </div>
 
     <div class="container">
-        <div id="name" class="user">
-            <div class="icon" id="avatar_left_top">
-                <img src="">
-            </div>
-            <div id="name_field" class="name">
-
-            </div>
-            <div id="email_field" class="email">
-
-            </div>
-        </div>
         <div class="tabs">
             <ul>
                 <a href="#allowed_extensions">
