@@ -66,3 +66,13 @@ span {
     margin: auto;
     display: block;
 }
+
+#admin_button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #202020;
+}
