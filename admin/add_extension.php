@@ -10,9 +10,9 @@
     array_push($ext_list, $file_extension);
 
     // Encode json
-    $encoded_json = json_encode($settings);
+    $encoded_json = json_encode($ext_list);
 
     // Save the file
-    file_put_contents('../config/settings.json', $encoded_json);
+    file_put_contents('../config/file_extensions.json', $encoded_json);
 
 ?>
