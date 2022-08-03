@@ -1,25 +1,6 @@
 {
     "max_file_size": "100",
     "max_file_name_length": 250,
-    "allowed_file_types": [
-        ".jpg",
-        ".jpeg",
-        ".png",
-        ".gif",
-        ".bmp",
-        ".tiff",
-        ".webp",
-        ".mp4",
-        ".webm",
-        ".mkv",
-        ".avi",
-        ".mov",
-        ".wmv",
-        ".flv",
-        ".mp3",
-        ".ogg",
-        ".wav"
-    ],
     "allow_all_file_types": true,
     "automated_virusscan": false,
     "always_need_password": false
