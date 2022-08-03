@@ -12,7 +12,7 @@ function delete_button(this_element) {
             button: button_text
         },
         success: function(data) {
-            console.log(data + " " + data);
+            console.log(data);
         }
     });
 }
