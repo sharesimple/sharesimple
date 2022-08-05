@@ -1,4 +1,14 @@
 <?php 
+
+    // Start session
+    session_start();
+
+    // Check if user is loggedin
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false || !isset($_SESSION['id']) || !isset($_SESSION['username'])){
+        // Redirect to login
+        header("Location: ./login.html");
+    }
+
     
     // Get and decode the json files
     $settings = json_decode(file_get_contents('../config/settings.json'), true);
