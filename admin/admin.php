@@ -9,6 +9,11 @@
         header("Location: ./login.html");
     }
 
+    // Check if user has admin perms
+    if($_SESSION['is_admin'] != true){
+        // Redirect to login
+        header("Location: ./app.html");
+    } 
     
     // Get and decode the json files
     $settings = json_decode(file_get_contents('../config/settings.json'), true);
