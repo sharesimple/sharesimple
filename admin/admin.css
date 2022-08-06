@@ -49,39 +49,6 @@ Main container
     width: 100%;
 }
 
-.user {
-    grid-area: user;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 50% 50%;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas: "icon name" "icon email";
-    margin-left: 0.5rem;
-}
-
-.icon {
-    grid-area: icon;
-    margin: auto;
-}
-
-.icon * {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-}
-
-.name {
-    grid-area: name;
-    display: inline-block;
-    align-self: flex-end;
-}
-
-.email {
-    grid-area: email;
-    font-size: 80%;
-}
-
 .tabs {
     grid-area: tabs;
 }
