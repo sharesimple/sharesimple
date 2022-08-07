@@ -3,7 +3,7 @@
     // Get the sent extension
     $file_extension = ".".$_POST['extension'];
 
-    // Get and decode the json file ../config/settings.json
+    // Get and decode the json file ../config/file_extensions.json
     $ext_list = json_decode(file_get_contents('../config/file_extensions.json'), true);
 
     // Push to array
