@@ -12,7 +12,7 @@
     // Check if user has admin perms
     if($_SESSION['is_admin'] != true){
         // Redirect to login
-        header("Location: ./app.html");
+        header("Location: ./login.html");
     } 
     
     // Get and decode the json files
