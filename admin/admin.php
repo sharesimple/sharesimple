@@ -89,7 +89,7 @@
                         <br>
                         <?php 
                             foreach ($allowed_file_types as $key => $value) {
-                                echo("<button onclick='delete_button(this);' class='button_active'>$value</button>");
+                                echo("<button onclick='extension_remove(this);' class='button_active'>$value</button>");
                             }
                         ?>
                         <button onclick="addFileExtension()" class="button_purple">

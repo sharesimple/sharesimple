@@ -1,12 +1,12 @@
 // Function to delete a file extension button
-function delete_button(this_element) {
+function extension_remove(this_element) {
     // Remove element
     this_element.remove();
     // Get the button text
     button_text = this_element.innerText;
-    // Run the script delete_button.php
+    // Run the script extension_remove.php
     $.ajax({
-        url: "delete_button.php",
+        url: "extension_remove.php",
         type: "POST",
         data: {
             button: button_text
@@ -22,9 +22,9 @@ function addFileExtension() {
     // Prompt for file extension
     file_extension = prompt("File extension");
     file_extension = file_extension.replace(".", "");
-    // Run the script add_extension.php
+    // Run the script extension_add.php
     $.ajax({
-        url: "add_extension.php",
+        url: "extension_add.php",
         type: "POST",
         data: {
             extension: file_extension
