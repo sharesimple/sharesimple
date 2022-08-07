@@ -10,7 +10,7 @@
     $ext_list = array_diff($ext_list, array($button));
 
     // Encode json
-    $encoded_json = json_encode($ext_list);
+    $encoded_json = json_encode(array_values($ext_list));
 
     // Save the file
     file_put_contents('../config/file_extensions.json', $encoded_json);
