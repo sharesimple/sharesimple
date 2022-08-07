@@ -191,6 +191,10 @@ form>input[type="radio"] {
     display: inline;
 }
 
+#allowed_file_extensions_buttons {
+    transition: 0.5s;
+}
+
 
 /* Error output */
 

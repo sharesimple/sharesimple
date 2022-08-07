@@ -80,10 +80,10 @@
                         <span>Alle Dateiendungen erlauben</span>
                         <br>
                         <br>
-                        <button class="button_active">Ja</button>
-                        <button class="button_inactive">Nein</button>
+                        <button id="all_extensions_button_on" class="<?php if($settings["allow_all_file_types"]){echo("button_active");}else{echo("button_inactive");}; ?>" onclick="setAllowAllExtensions(1)">Ja</button>
+                        <button id="all_extensions_button_off" class="<?php if(!$settings["allow_all_file_types"]){echo("button_active");}else{echo("button_inactive");}; ?>" onclick="setAllowAllExtensions(0)">Nein</button>
                     </p>
-                    <p>
+                    <p id="allowed_file_extensions_buttons">
                         <span>Erlaubte Dateiendungen</span>
                         <br>
                         <br>
