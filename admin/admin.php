@@ -69,6 +69,9 @@
             </ul>
 
         </div>
+        <div class="logout">
+            <div id="logout_inner">Ausloggen <i class="fa-solid fa-power-off"></i></div>
+        </div>
         <div class="admin">
             <div id="allowed_extensions">
                 <h1>Erlaubte dateien</h1>

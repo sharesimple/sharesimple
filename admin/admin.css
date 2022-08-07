@@ -41,12 +41,39 @@ Main container
 .container {
     display: grid;
     grid-template-columns: 25% 75%;
-    grid-template-rows: 15% 85%;
+    grid-template-rows: 90% 10%;
     gap: 0px 0px;
     grid-auto-flow: row;
-    grid-template-areas: "tabs admin" "tabs admin";
+    /* The logout area is unused, it's only there to block that space for the logout button (thats positioned fix) */
+    grid-template-areas: "tabs admin" "logout admin";
     height: 100%;
     width: 100%;
+}
+
+.logout {
+    background-color: #2f2f2f;
+    position: fixed;
+    width: 25%;
+    font-size: 1.25rem;
+    height: 10%;
+    bottom: 0;
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.125s;
+}
+
+.logout:hover {
+    background-color: #383e42;
+    transform: scale(1.025);
+}
+
+#logout_inner {
+    display: block;
 }
 
 .tabs {
@@ -55,7 +82,7 @@ Main container
 
 ul {
     list-style: none;
-    padding-left: 0.5em;
+    padding-left: 0.5rem;
 }
 
 li {
