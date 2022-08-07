@@ -69,7 +69,7 @@
             </ul>
 
         </div>
-        <div class="logout">
+        <div class="logout" onclick="location.assign('./logout.php')">
             <div id="logout_inner">Ausloggen <i class="fa-solid fa-power-off"></i></div>
         </div>
         <div class="admin">
