@@ -25,11 +25,11 @@
     
     // Get and decode the json file ../config/settings.json
     $settings = json_decode(file_get_contents('../config/settings.json'), true);
+    $allowed_file_types = json_decode(file_get_contents('../config/file_extensions.json'), true);
 
     // Get all settings
     $max_file_size = $settings['max_file_size'];
     $max_file_name_length = $settings['max_file_name_length'];
-    $allowed_file_types = $settings['allowed_file_types'];
     $allow_all_file_types = $settings['allow_all_file_types'];
 
     // Convert max file size to bytes
@@ -67,7 +67,7 @@
             if(!$allow_all_file_types){
 
                 // Check if the file type is allowed
-                if (!in_array($file_ext, $allowed_file_types)) {
+                if (!in_array(".".$file_ext, $allowed_file_types)) {
                     
                     exit("That file type is not supported");
                 }
