@@ -38,12 +38,6 @@
 
 <body>
 
-    <!-- Close icon -->
-    <div class="close-icon" onclick="closeadmin();">
-        <i class="fa-solid fa-square-xmark"></i>
-    </div>
-
-
     <!-- Container for outputting messages -->
     <div id="output_message">
     </div>
