@@ -56,7 +56,7 @@ function setAllowAllExtensions(bool) {
         document.getElementById("allowed_file_extensions_buttons").style.cursor = "auto";
         document.getElementById("allowed_file_extensions_buttons").childNodes.forEach(element => {
             if (element.className == "button_active") {
-                element.style.cursor = "auto";
+                element.style.cursor = "pointer";
             }
         });
     }
