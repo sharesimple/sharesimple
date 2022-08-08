@@ -42,9 +42,23 @@ function setAllowAllExtensions(bool) {
     if (bool) {
         document.getElementById("all_extensions_button_on").classList.add("button_active");
         document.getElementById("all_extensions_button_off").classList.add("button_inactive");
+        document.getElementById("allowed_file_extensions_buttons").style.filter = "saturate(0) blur(1px)";
+        document.getElementById("allowed_file_extensions_buttons").style.cursor = "not-allowed";
+        document.getElementById("allowed_file_extensions_buttons").childNodes.forEach(element => {
+            if (element.className == "button_active") {
+                element.style.cursor = "not-allowed";
+            }
+        });
     } else {
         document.getElementById("all_extensions_button_off").classList.add("button_active");
         document.getElementById("all_extensions_button_on").classList.add("button_inactive");
+        document.getElementById("allowed_file_extensions_buttons").style.filter = "";
+        document.getElementById("allowed_file_extensions_buttons").style.cursor = "auto";
+        document.getElementById("allowed_file_extensions_buttons").childNodes.forEach(element => {
+            if (element.className == "button_active") {
+                element.style.cursor = "auto";
+            }
+        });
     }
     $.ajax({
         url: "set_allow_all_extension.php",
@@ -58,11 +72,10 @@ function setAllowAllExtensions(bool) {
     });
 }
 
-// contrast change on all active
-window.setInterval(() => {
+window.setTimeout(() => {
     if (document.getElementById("all_extensions_button_on").classList.contains("button_active")) {
-        document.getElementById("allowed_file_extensions_buttons").style.filter = "saturate(0) blur(1px)";
+        setAllowAllExtensions(1);
     } else {
-        document.getElementById("allowed_file_extensions_buttons").style.filter = "saturate(1)";
+        setAllowAllExtensions(0);
     }
-}, 10);
+}, 100);
