@@ -29,5 +29,5 @@
     }
 
     // Redirect
-    header("Location: ./step6.html");
+    header("Location: ../step6.html");
 ?>
