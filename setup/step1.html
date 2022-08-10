@@ -1,37 +1,41 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
+    <title>ShareSimple - Setup</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <!-- Set tab icon -->
 </head>
 
 <body>
-    <h1>Sharesimple - Installation</h1>
-    <div id="installation">
-        <h2 class="installation-title">
-            Schritt 2 / 5
-        </h2>
-        <p id="installation_text">
-            Bitte geben sie nun die Datenbankserver-Zugangsdaten ein.
-        </p>
-        <form action="setDatabaseCreds.php" method="post">
-            Host:
-            <br>
-            <input type="text" name="db_host" placeholder="localhost" id="" required>
-            <br> Benutzername:
-            <br>
-            <input type="text" name="db_user" placeholder="root" id="" required>
-            <br> Passwort:
-            <br>
-            <input type="password" name="db_pass" placeholder="&#183;&#183;&#183;&#183;" id="">
-            <input type="submit" value="Verbindung prüfen">
-        </form>
+
+    <!-- The Container in which the Error output is pasted -->
+    <div id="errorOutputContainer">
     </div>
-    <script src="script.js"></script>
+
+    <!-- A container that centers the form -->
+    <div id="centering_container">
+
+        <!-- The main login section -->
+        <div id="setup">
+
+            <!-- Header -->
+            <h1>ShareSimple - Einrichtung - Schritt 1</h1>
+            <h2>Datenbank - Zugangsdaten</h2>
+
+            <!-- The action buttons -->
+            <form action="./scripts/db_set_access.php" method="post">
+                <input type="text" name="db_host" placeholder="Datenbankserver Host" id="db_host" required>
+                <input type="text" name="db_user" placeholder="Datenbankserver Nutzername" id="db_user" required>
+                <input type="password" name="db_pass" placeholder="Datenbankserver Nutzerpasswort" id="db_pass">
+                <input type="text" name="db_name" placeholder="Datenbankname" id="db_name" required>
+                <input type="submit" value="Zugangsdaten speichern">
+            </form>
+        </div>
+    </div>
+    <script src="message_script.js"></script>
 </body>
 
 </html>
