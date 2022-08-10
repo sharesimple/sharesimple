@@ -6,6 +6,18 @@
     $index .= "?>";
     file_put_contents("../../index.php",$index);
 
-    // Redirect to admin panel login
-    header("Location: ../../admin/");
+    // Create deleter file
+    $deleter_file = "<?php\n";
+    $deleter_file .= "  // Remove setup directory";
+    $deleter_file .= "  rmdir('./setup/');";
+    $deleter_file .= "  // Delete this file";
+    $deleter_file .= "  unlink(__FILE__);";
+    $deleter_file .= "  // Redirect to admin panel";
+    $deleter_file .= "  header('Location: ../../admin/')";
+    $deleter_file .= "?>";
+    file_put_contents("../../del_setup.php", $deleter_file);
+
+    // Redirect to tmp del file
+    header("Location: ../../del_setup.php");
+
 ?>
