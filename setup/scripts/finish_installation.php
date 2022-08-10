@@ -16,7 +16,7 @@
     $deleter_file .= "  // Delete this file\n";
     $deleter_file .= "  unlink(__FILE__);\n";
     $deleter_file .= "  // Redirect to admin panel\n";
-    $deleter_file .= "  header('Location: ../../admin/');\n";
+    $deleter_file .= "  header('Location: ./admin/');\n";
     $deleter_file .= "?>";
     file_put_contents("../../del_setup.php", $deleter_file);
 
