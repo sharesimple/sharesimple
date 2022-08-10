@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
-    <title>Sharesimple</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Theme button -->
-    <div id="themeButton">
-        <button id="themeToggleButton" onclick="toggleTheme()">Darkmode/Lightmode</button>
-    </div>
+    <h1>Datei hochladen</h1>
+    <div id="main">
+        <h2></h2>
+        <p></p>
+        <form action="upload_file.php" method="post" enctype="multipart/form-data">
 
-    <div id="choose">
-        <!-- Header -->
-        <h1>Datei hochladen</h1>
-
-        <form id="auswaehlen" action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Hochladen" name="submit">
+            <br> Datei:
+            <br>
+            <input type="file" name="upload_file" id="file" accept="*">
+            <br>
+            <input type="submit" value="Datei hochladen">
         </form>
-        <span id="other_page" onclick='window.location.assign("index.html")'>Startseite</span>
     </div>
-
-    <!-- Load all needed scripts -->
-    <script src="themes.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

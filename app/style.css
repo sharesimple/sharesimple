@@ -1,78 +1,78 @@
 /* Import the font "Dosis" that's used */
 
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap');
+:root {
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+}
+
+html {
+    background-color: var(--color-primary);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+}
+
 body {
     font-family: Dosis;
-    background-color: #282c36;
     transition: 0.75s;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    display: block;
 }
-
-
-/* header */
 
 h1 {
+    font-size: 5vh;
     text-align: center;
-    color: #5b6574;
-    font-size: 24px;
-    padding: 20px 0 20px 0;
-    border-bottom: 1px solid #dee0e4;
+    margin-top: 5vh;
+    margin-bottom: 0;
 }
 
-#code {
-    color: #ff0000;
-}
-
-
-/* menu */
-
-#choose {
-    width: 400px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 0 #000;
-    margin: 100px auto;
-    border-radius: 15px;
+#main {
+    margin: auto;
+    margin-top: 15vh;
+    width: 50vw;
+    height: 50vh;
     text-align: center;
 }
 
-#auswaehlen {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+#main form {
+    text-align: left;
+    width: 75%;
+    margin: auto;
 }
 
-.menu_buttton,
-input {
-    text-align: center;
+#main form input,
+button {
     width: 100%;
-    padding: 15px;
-    margin: 5px;
-    background-color: #3274d6;
-    border: 0;
+    padding: 5%;
+    margin-bottom: 2.5%;
+    border: none;
+    font-size: 2vh;
+    border-bottom: 1px solid var(--color-secondary);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+span {
+    font-size: 2rem;
     cursor: pointer;
-    font-weight: bold;
-    color: #ffffff;
-    transition: background-color 0.2s;
-    border-radius: 15px;
 }
 
-#other_page {
+#backlink_home {
     cursor: pointer;
-    color: #3274d6;
-    padding-top: 15px;
+    padding-bottom: 20px;
+    width: fit-content;
+    margin: auto;
+    display: block;
 }
 
-
-/* Theme switcher */
-
-#themeToggleButton {
-    color: var(--font-color);
-    background: var(--color-primary);
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-#themeButton {
+#admin_button {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    bottom: 0;
+    right: 0;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #202020;
 }

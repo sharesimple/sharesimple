@@ -1,37 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sharesimple</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/b5c383da68.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!-- Theme button -->
-    <div id="themeButton">
-        <button id="themeToggleButton" onclick="toggleTheme()">Darkmode/Lightmode</button>
+    <h1>Sharesimple</h1>
+    <div id="main">
+        <h1></h1>
+        <p></p>
+        <button onclick="upload();">Datei Hochladen</button>
+        <button onclick="download();">Datei Herunterladen</button>
     </div>
-
-    <div id="choose">
-        <!-- Header -->
-        <h1>Was möchtest du tun?</h1>
-
-        <!-- The menu -->
-        <div id="auswaehlen">
-            <!-- Username field -->
-            <span class="menu_buttton" onclick='window.location.assign("download.html")'>Datei herunterladen</span>
-
-            <!-- Password field -->
-            <span class="menu_buttton" onclick='window.location.assign("upload.html")'>Datei hochladen</span>
-
-            <!-- Password field -->
-            <span class="menu_buttton" onclick='window.location.assign("help.html")'>Hilfe</span>
-        </div>
+    <div id="admin_button" onclick="location.assign('../admin/admin.php')">
+        <i class="fa-solid fa-hammer"></i>
     </div>
-
-    <!-- Load all needed scripts -->
-    <script src="themes.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
-    <title>Sharesimple</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Theme button -->
-    <div id="themeButton">
-        <button id="themeToggleButton" onclick="toggleTheme()">Darkmode/Lightmode</button>
-    </div>
+    <h1>Datei herunterladen</h1>
+    <div id="main">
+        <h2></h2>
+        <p></p>
+        <form action="download_file.php" method="post">
 
-    <div id="choose">
-        <!-- Header -->
-        <h1>Datei herunterladen</h1>
-
-        <form id="auswaehlen" action="download.php" method="post" enctype="multipart/form-data">
-            <input type="text" name="fileToDownload" id="fileToDownload" placeholder="Datei-ID">
-            <input type="text" value="" name="passcode" placeholder="Passcode">
-            <input type="submit" value="Herunterladen" name="submit">
+            <br> Datei ID:
+            <br>
+            <input type="text" name="file_id" placeholder="1234" id="" required>
+            <br> Passwort:
+            <br>
+            <input type="text" name="file_key" placeholder="&#183;&#183;&#183;" id="">
+            <input type="submit" value="Datei herunterladen">
         </form>
-        <span id="other_page" onclick='window.location.assign("index.html")'>Startseite</span>
     </div>
-
-    <!-- Load all needed scripts -->
-    <script src="themes.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
