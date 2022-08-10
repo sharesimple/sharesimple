@@ -9,6 +9,9 @@
     // Create deleter file
     $deleter_file = "<?php\n";
     $deleter_file .= "  // Remove setup directory\n";
+    $deleter_file .= "  array_map('unlink', glob('setup/scripts/*.*'));\n";
+    $deleter_file .= "  rmdir('./setup/scripts/');\n";
+    $deleter_file .= "  array_map('unlink', glob('setup/*.*'));\n";
     $deleter_file .= "  rmdir('./setup/');\n";
     $deleter_file .= "  // Delete this file\n";
     $deleter_file .= "  unlink(__FILE__);\n";
