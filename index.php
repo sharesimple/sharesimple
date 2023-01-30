@@ -13,9 +13,13 @@
     <link rel="stylesheet" href="/res/fontawesome/css/solid.min.css">
     <link rel="stylesheet" href="/res/css/fonts.css">
     <link rel="stylesheet" href="/res/css/main.css">
+    <link rel="stylesheet" href="/res/css/parallax.css">
 </head>
 <body>
+    <div class="parallax-wrap"></div>
+
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <script src="/res/js/parallax.js"></script>
 </body>
 
 </html>
