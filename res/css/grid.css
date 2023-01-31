@@ -53,7 +53,7 @@ Upload
 }
 
 #upload_button_container {
-    height: calc(100% - 4rem);
+    height: calc(50vh - 7.5rem);
     aspect-ratio: 1/1;
     font-size: 5rem;
     padding: 1rem;
@@ -74,6 +74,21 @@ Download
 
 .main_container-download {
     grid-area: main_container-download;
+}
+
+#download_button_container {
+    height: calc(50vh - 6rem);
+    aspect-ratio: 1/1;
+    font-size: 5rem;
+    padding: 1rem;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+#download-input {
+    display: none;
 }
 
 

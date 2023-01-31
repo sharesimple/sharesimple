@@ -32,6 +32,9 @@
         </div>
         <div class="main_container-download">
             <h1>Herunterladen</h1>
+            <span id="download_button_container">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+            </span>
         </div>
         <div class="main_container-settings">
 
