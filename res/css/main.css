@@ -16,7 +16,6 @@ body {
     padding: 0;
     width: 100%;
     height: 100%;
-    transition: 0;
     font-size: 100%;
     font-family: "Inter";
     scroll-behavior: smooth;
@@ -28,8 +27,4 @@ body {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-main {
-    position: relative;
 }

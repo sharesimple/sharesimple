@@ -1,0 +1,86 @@
+main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "main_container-upload main_container-title" "main_container-upload main_container-settings" "main_container-download main_container-settings";
+    position: relative;
+}
+
+
+/* 
+General
+*/
+
+main>div>h1 {
+    font-size: 3rem;
+    margin: 0;
+    text-align: center;
+}
+
+main div {
+    background-color: #ffffff10;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+
+/* 
+Title area
+*/
+
+.main_container-title {
+    grid-area: main_container-title;
+    display: grid;
+    place-items: center;
+}
+
+.main_container-title h1 {
+    font-size: 5rem;
+    margin: 0;
+}
+
+
+/* 
+Upload
+*/
+
+.main_container-upload {
+    grid-area: main_container-upload;
+}
+
+#upload_button_container {
+    height: 100%;
+    aspect-ratio: 1/1;
+    font-size: 5rem;
+    padding: 1rem;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+#upload-input {
+    display: none;
+}
+
+
+/* 
+Download
+*/
+
+.main_container-download {
+    grid-area: main_container-download;
+}
+
+
+/* 
+Settings area
+*/
+
+.main_container-settings {
+    grid-area: main_container-settings;
+}
