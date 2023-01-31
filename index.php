@@ -23,18 +23,26 @@
             <h1>ShareSimple</h1>
             <p>Share files with your friends at ease</p>
         </div>
-        <div class="main_container-upload">
-            <h1>Hochladen</h1>
-            <label id="upload_button_container" for="upload-input">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-            </label>
+        <div class="main_container-upload action_button">
+            <div class="action_button-title">
+                <h1>Hochladen</h1>
+            </div>
+            <div class="action_button-button">
+                <label id="upload_button_container" for="upload-input">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </label>
+            </div>
             <input type="file" id="upload-input">
         </div>
-        <div class="main_container-download">
-            <h1>Herunterladen</h1>
-            <span id="download_button_container">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-            </span>
+        <div class="main_container-download action_button">
+            <div class="action_button-title">
+                <h1>Herunterladen</h1>
+            </div>
+            <div class="action_button-button">
+                <span id="download_button_container">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                </span>
+            </div>
         </div>
         <div class="main_container-settings">
 

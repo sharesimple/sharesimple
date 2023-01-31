@@ -14,13 +14,7 @@ main {
 General
 */
 
-main>div>h1 {
-    font-size: 3rem;
-    margin: 0;
-    text-align: center;
-}
-
-main div {
+main>div {
     background-color: #ffffff10;
     margin: 1rem;
     border-radius: 0.5rem;
@@ -38,56 +32,53 @@ Title area
     place-items: center;
 }
 
-.main_container-title h1 {
-    font-size: 5rem;
+.main_container-title>h1 {
+    font-size: 3rem;
     margin: 0;
 }
 
 
 /* 
-Upload
+Action buttons
 */
 
 .main_container-upload {
     grid-area: main_container-upload;
 }
 
-#upload_button_container {
-    height: calc(50vh - 7.5rem);
-    aspect-ratio: 1/1;
-    font-size: 5rem;
-    padding: 1rem;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-}
-
-#upload-input {
-    display: none;
-}
-
-
-/* 
-Download
-*/
-
 .main_container-download {
     grid-area: main_container-download;
 }
 
-#download_button_container {
-    height: calc(50vh - 6rem);
-    aspect-ratio: 1/1;
+.action_button {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content auto;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "action_button-title" "action_button-button";
+}
+
+.action_button-title {
+    grid-area: action_button-title;
+    font-size: 1.25rem;
+    margin: 0;
+    text-align: center;
+}
+
+.action_button-button {
+    grid-area: action_button-button;
     font-size: 5rem;
-    padding: 1rem;
-    width: 100%;
     display: grid;
     place-items: center;
     cursor: pointer;
 }
 
-#download-input {
+.action_button-button * {
+    cursor: pointer;
+}
+
+#upload-input {
     display: none;
 }
 
