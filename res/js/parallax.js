@@ -4,7 +4,13 @@
 document.addEventListener("mousemove", init);
 
 function init() {
-    for (let i = 0; i < 8; i++) {
+    // On hoverable devices spawn 3 elements
+    // On non hoverable devices spawn 5 - 10
+    let spawns;
+    if (window.matchMedia('(hover:none)').matches) spawns = 3;
+    else spawns = Math.floor(Math.random() * 5) + 5;
+    // Spawn the elements
+    for (let i = 0; i < spawns; i++) {
         const element = document.createElement("span");
         let multiplicator = 0;
         while (multiplicator == Math.floor(Math.abs(multiplicator / 3))) {
@@ -41,9 +47,11 @@ function init() {
 // The main function
 // 
 document.addEventListener("mousemove", parallax);
+document.addEventListener("mousemove", e => console.log(e));
 
-function parallax(event) {
-    this.querySelectorAll(".parallax-wrap span").forEach((shift) => {
+function parallax(event, this_sel) {
+    if (this_sel == undefined) this_sel = this;
+    this_sel.querySelectorAll(".parallax-wrap span").forEach((shift) => {
         const position = shift.getAttribute("value");
         const x = (window.innerWidth - event.pageX * position) / 90;
         const y = (window.innerHeight - event.pageY * position) / 90;
@@ -51,3 +59,11 @@ function parallax(event) {
         shift.style.transform = `translateX(${x}px) translateY(${y}px)`;
     });
 }
+
+// On touch screen
+if (window.matchMedia('(hover:none)').matches) window.setInterval(() => {
+    parallax({
+        pageX: Math.random() * window.innerWidth * 2,
+        pageY: Math.random() * window.innerHeight * 2
+    }, document);
+}, 4000);

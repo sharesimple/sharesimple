@@ -11,6 +11,16 @@
     z-index: 0;
 }
 
+@media (hover:none) {
+    .parallax-wrap span {
+        transition: 3s cubic-bezier(.5, 0, .5, 1);
+    }
+    .parallax-wrap span i {
+        opacity: 0.125 !important;
+        font-size: 200%;
+    }
+}
+
 .parallax-wrap span {
     position: absolute;
     border-radius: 100%;
