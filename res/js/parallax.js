@@ -31,8 +31,8 @@ function init() {
         document.querySelector(".parallax-wrap").append(element);
     }
     document.querySelectorAll(".parallax-wrap span").forEach((element) => {
-        element.style.top = Math.floor(Math.random() * 60 + 20) + "%";
-        element.style.left = Math.floor(Math.random() * 60 + 20) + "%";
+        element.style.top = Math.floor(Math.random() * 80 + 10) + "%";
+        element.style.left = Math.floor(Math.random() * 80 + 10) + "%";
         element.style.opacity = Math.random() * 0.8 + 0.2;
     });
 
