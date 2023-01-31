@@ -27,10 +27,8 @@
             <div class="action_button-title">
                 <h1>Hochladen</h1>
             </div>
-            <div class="action_button-button">
-                <label id="upload_button_container" for="upload-input">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                </label>
+            <div class="action_button-button" onclick="document.querySelector('#upload-input').click();">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <input type="file" id="upload-input">
         </div>
