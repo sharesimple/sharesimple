@@ -47,7 +47,6 @@ function init() {
 // The main function
 // 
 document.addEventListener("mousemove", parallax);
-document.addEventListener("mousemove", e => console.log(e));
 
 function parallax(event, this_sel) {
     if (this_sel == undefined) this_sel = this;
