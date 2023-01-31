@@ -53,7 +53,7 @@ Upload
 }
 
 #upload_button_container {
-    height: 100%;
+    height: calc(100% - 4rem);
     aspect-ratio: 1/1;
     font-size: 5rem;
     padding: 1rem;
