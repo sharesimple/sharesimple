@@ -6,7 +6,11 @@ document.addEventListener("mousemove", init);
 function init() {
     for (let i = 0; i < 8; i++) {
         const element = document.createElement("span");
-        element.setAttribute("value", Math.floor((Math.random() - 0.5) * 50));
+        let multiplicator = 0;
+        while (multiplicator == Math.floor(Math.abs(multiplicator / 3))) {
+            multiplicator = Math.floor((Math.random() - 0.5) * 50);
+        }
+        element.setAttribute("value", multiplicator);
         switch (Math.floor(Math.random() * 3) + 1) {
             case 1:
                 element.innerHTML = '<i class="fa-regular fa-file"></i>';
@@ -23,7 +27,7 @@ function init() {
     document.querySelectorAll(".parallax-wrap span").forEach((element) => {
         element.style.top = Math.floor(Math.random() * 60 + 20) + "%";
         element.style.left = Math.floor(Math.random() * 60 + 20) + "%";
-        element.style.opacity = Math.random();
+        element.style.opacity = Math.random() * 0.8 + 0.2;
     });
 
     // Show parallax elements
