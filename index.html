@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -17,6 +16,7 @@
     <link rel="stylesheet" href="/res/css/grid.css">
     <link rel="stylesheet" href="/res/css/settings.css">
 </head>
+
 <body>
     <div class="parallax-wrap"></div>
     <main>
@@ -45,7 +45,24 @@
                 <p>Share files with your friends at ease</p>
             </div>
             <div class="panel main_container-settings">
-                <div class="download_container"></div>
+                <div class="download_container settings_container">
+                    <h1>Datei Herunterladen</h1>
+                    <p>
+                        <label for="download_id">
+                            Download-ID <br>
+                        </label>
+                        <input type="text" name="download_id" id="download_id" placeholder="1234" maxlength="4" value="">
+                    </p>
+                    <p>
+                        <label for="download_passcode">
+                            Passcode <br>
+                        </label>
+                        <input type="password" name="download_passcode" id="download_passcode" placeholder="6789" maxlength="4" value="">
+                    </p>
+                    <div class="download_start-button" onclick="download();">
+                        <i class="fa-solid fa-circle-down"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
