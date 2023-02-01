@@ -55,10 +55,6 @@ function download() {
             file_passcode: download_passcode_field.value
         },
         success: function(data) {
-            if (data == "FALSEPASS") {
-                download_start_button.style.color = "#f00";
-                return;
-            }
             if (!data.startsWith("?DT=")) {
                 download_start_button.style.color = "#f00";
                 return;
