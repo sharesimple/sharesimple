@@ -37,7 +37,7 @@ Right area
     gap: 0px 0px;
     grid-template-areas: "main_container-title" "main_container-settings";
     grid-area: main_container_right;
-    transition: 1s all;
+    transition: 1.5s all;
 }
 
 .main_container-settings {
