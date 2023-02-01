@@ -1,0 +1,8 @@
+.download_container {
+    display: none;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    transition: 1s;
+}

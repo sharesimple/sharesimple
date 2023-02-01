@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/res/css/main.css">
     <link rel="stylesheet" href="/res/css/parallax.css">
     <link rel="stylesheet" href="/res/css/grid.css">
+    <link rel="stylesheet" href="/res/css/settings.css">
 </head>
 <body>
     <div class="parallax-wrap"></div>
@@ -32,7 +33,7 @@
             <div class="action_button-title">
                 <h1>Herunterladen</h1>
             </div>
-            <div class="action_button-button">
+            <div class="action_button-button" onclick="openDownloadSettings();">
                 <span id="download_button_container">
                     <i class="fa-solid fa-cloud-arrow-down"></i>
                 </span>
@@ -43,11 +44,14 @@
                 <h1>ShareSimple</h1>
                 <p>Share files with your friends at ease</p>
             </div>
-            <div class="panel main_container-settings"></div>
+            <div class="panel main_container-settings">
+                <div class="download_container"></div>
+            </div>
         </div>
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="/res/js/parallax.js"></script>
+    <script src="/res/js/settings.js"></script>
 </body>
 
 </html>
