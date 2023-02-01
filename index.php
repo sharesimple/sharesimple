@@ -19,11 +19,7 @@
 <body>
     <div class="parallax-wrap"></div>
     <main>
-        <div class="main_container-title">
-            <h1>ShareSimple</h1>
-            <p>Share files with your friends at ease</p>
-        </div>
-        <div class="main_container-upload action_button">
+        <div class="panel main_container-upload action_button">
             <div class="action_button-title">
                 <h1>Hochladen</h1>
             </div>
@@ -32,7 +28,7 @@
             </div>
             <input type="file" id="upload-input">
         </div>
-        <div class="main_container-download action_button">
+        <div class="panel main_container-download action_button">
             <div class="action_button-title">
                 <h1>Herunterladen</h1>
             </div>
@@ -42,8 +38,12 @@
                 </span>
             </div>
         </div>
-        <div class="main_container-settings">
-
+        <div class="main_container_right">
+            <div class="panel main_container-title">
+                <h1>ShareSimple</h1>
+                <p>Share files with your friends at ease</p>
+            </div>
+            <div class="panel main_container-settings"></div>
         </div>
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
