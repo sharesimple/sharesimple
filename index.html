@@ -15,9 +15,32 @@
     <link rel="stylesheet" href="/res/css/parallax.css">
     <link rel="stylesheet" href="/res/css/grid.css">
     <link rel="stylesheet" href="/res/css/settings.css">
+    <link rel="stylesheet" href="/res/css/overlay.css">
 </head>
 
 <body>
+    <div class="upload_overlay">
+        <h1><i class="fa-solid fa-cloud-arrow-up fa-fade" style="--fa-animation-duration: 3s;"></i></h1>
+        <div>
+            <div class="loader circle paused">
+                <svg viewBox="0 0 80 80">
+                    <circle id="test" cx="40" cy="40" r="32"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle paused">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader square paused">
+                <svg viewBox="0 0 80 80">
+                    <rect x="8" y="8" width="64" height="64"></rect>
+                </svg>
+            </div>
+        </div>
+    </div>
     <div class="parallax-wrap"></div>
     <main>
         <div class="panel main_container-upload action_button">
@@ -92,6 +115,7 @@
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="/res/js/parallax.js"></script>
     <script src="/res/js/settings.js"></script>
+    <script src="/res/js/overlay.js"></script>
 </body>
 
 </html>

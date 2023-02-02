@@ -1,5 +1,6 @@
 // General elements
 const main_container_right = document.querySelector(".main_container_right");
+const upload_overlay = document.querySelector(".upload_overlay");
 // Upload elements
 const upload_container = document.querySelector(".upload_container");
 const upload_file_field = document.querySelector("#upload-input");
@@ -100,12 +101,11 @@ function upload() {
         cache: false,
         processData: false,
         beforeSend: function() {
-            console.log("Uploading file...");
+            document.documentElement.style.setProperty('--animation-state', "running");
+            upload_overlay.style.display = "grid";
         },
         success: function(data) {
-            console.log(data);
             data = JSON.parse(data);
-            console.log(data);
             if (!data.success) {
                 console.log("ERROR");
                 return;
@@ -114,7 +114,8 @@ function upload() {
                 console.log("No file id");
                 return;
             }
-            console.log("File uploaded");
+            upload_overlay.style.display = "none";
+            document.documentElement.style.setProperty('--animation-state', "paused");
             console.log("File id: " + data.file_id);
             console.log("File passcode: " + data.file_passcode);
         },
