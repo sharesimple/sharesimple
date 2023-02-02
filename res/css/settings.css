@@ -26,6 +26,18 @@
     visibility: hidden;
 }
 
+#download_id,
+#download_passcode {
+    outline-color: transparent;
+    width: 6rem;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    background-color: var(--background-color);
+    color: var(--accent2-color);
+    border-color: transparent;
+    border-radius: 0.25rem;
+}
+
 
 /* Upload */
 

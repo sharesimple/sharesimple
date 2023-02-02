@@ -14,6 +14,7 @@ const download_container = document.querySelector(".download_container");
 const download_id_field = document.querySelector("#download_id");
 const download_passcode_field = document.querySelector("#download_passcode");
 const download_start_button = document.querySelector(".download_start-button");
+const download_passcode_container = document.querySelector("#download_passcode-container");
 
 // 
 // Download
@@ -26,11 +27,12 @@ function openDownloadSettings() {
     window.setTimeout(() => download_container.style.opacity = 1, 1000);
     download_id_field.addEventListener("input", checkDownloadSettingsInput);
 }
+checkDownloadSettingsInput();
 
 function checkDownloadSettingsInput() {
     if (download_id_field.value.length != 4) {
         download_start_button.style.visibility = "hidden";
-        download_passcode_field.style.visibility = "hidden";
+        download_passcode_container.style.visibility = "hidden";
         return;
     }
     // Check passcode
@@ -44,18 +46,18 @@ function checkDownloadSettingsInput() {
         success: function(data) {
             if (data == "NOPASS") {
                 download_start_button.style.visibility = "visible";
-                download_passcode_field.closest("p").style.visibility = "hidden";
+                download_passcode_container.closest("p").style.visibility = "hidden";
                 return;
             }
             download_passcode_field.addEventListener("input", checkDownloadSettingsInput);
             if (data == "FALSEPASS") {
                 download_start_button.style.visibility = "hidden";
-                download_passcode_field.style.visibility = "visible";
+                download_passcode_container.style.visibility = "visible";
                 return;
             }
             if (data == "TRUEPASS") {
                 download_start_button.style.visibility = "visible";
-                download_passcode_field.style.visibility = "visible";
+                download_passcode_container.style.visibility = "visible";
                 return;
             }
         }
