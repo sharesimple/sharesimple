@@ -1,34 +1,29 @@
 # Sharesimple 
-Eine website, mithilfe der Dateien auf den Server hochgeladen werden können.
 
-<br>  
+Sharesimple is a web-application to share files with other people easily.  
+An open sharesimple instance is available at [https://sharesimple.de](https://sharesimple.de).
 
-# Maximale Dateigröße einstellen
-In der PHP-Konfigurationsdatei (php.ini) unter den Werten  
-**post_max_size** und **upload_max_filesize** den Maximalwert eintragen.  
+# Config
 
-In der datei upload.php musst du die Dateigröße in der Variable **$max_size** in Bytes eintragen.
+To use this application, you need to create a config.php file in the root directory of the application.  
 
-<details>
-<summary>Beispiel</summary>
-php.ini:  
+This is an example config file:
 
-- post_max_size=1.5G  
-- upload_max_filesize=1.5G  
-
-upload.php:  
-- $max_size = 1610612736;
-</details>
-
-<br>  
-
-# Lösch-skript
-Das Skript, welches die Dateien löscht, die nicht mehr gebraucht werden.  
-Um dieses skript zu nutzen musst du einmalig in dem Verzeichnis, den folgenden Befehl ausführen:
-```nodejs
-npm i
+```php
+<?php
+    // Database credentials
+    define('DB_NAME', 'DATABASE_NAME');
+    define('DB_USER', 'DATABASE_USER');
+    define('DB_PASS', 'DATABASE_USER_PASSWORD');
+    define('DB_HOST', 'DATABASE_HOST');
+    
+    // The directory where the files are stored
+    define('FILES_DIR', '../files/');
+?>
 ```
-Anschließend kannst du das Skript jederzeit mit folgendem Befehl starten:
-```nodejs
-node app.js
-```
+Currently there is no way to set a database port.
+
+# Important notices
+
+- Even though there are passcodes for files, currently the files are not encrypted.
+- The directory for the files is not protected in any way. It should be outside of your websites document root.
