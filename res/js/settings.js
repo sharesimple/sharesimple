@@ -5,6 +5,7 @@ const upload_container = document.querySelector(".upload_container");
 const upload_file_field = document.querySelector("#upload-input");
 const upload_start_button = document.querySelector(".upload_start-button");
 const upload_button_icon = document.querySelector(".upload-button_icon > i");
+const upload_input = document.querySelector("#upload-input");
 // Download elements
 const download_container = document.querySelector(".download_container");
 const download_id_field = document.querySelector("#download_id");
@@ -84,4 +85,42 @@ function openUploadSettings() {
     main_container_right.style.gridTemplateRows = "3fr 9fr";
     upload_container.style.display = "block";
     window.setTimeout(() => upload_container.style.opacity = 1, 1000);
+}
+
+function upload() {
+    let form_data = new FormData();
+    form_data.append("upload", upload_input.files[0]);
+    form_data.append("use_passcode", "0");
+    form_data.append("autodelete", "1");
+    $.ajax({
+        url: "./res/php/upload.php",
+        method: "POST",
+        data: form_data,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function() {
+            console.log("Uploading file...");
+        },
+        success: function(data) {
+            console.log(data);
+            data = JSON.parse(data);
+            console.log(data);
+            if (!data.success) {
+                console.log("ERROR");
+                return;
+            }
+            if (data.file_id == null) {
+                console.log("No file id");
+                return;
+            }
+            console.log("File uploaded");
+            console.log("File id: " + data.file_id);
+            console.log("File passcode: " + data.file_passcode);
+        },
+        error: function(e) {
+            console.log("Error");
+            console.log(e);
+        }
+    });
 }
