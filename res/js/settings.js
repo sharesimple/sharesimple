@@ -1,8 +1,19 @@
+// General elements
 const main_container_right = document.querySelector(".main_container_right");
+// Upload elements
+const upload_container = document.querySelector(".upload_container");
+const upload_file_field = document.querySelector("#upload-input");
+const upload_start_button = document.querySelector(".upload_start-button");
+const upload_button_icon = document.querySelector(".upload-button_icon > i");
+// Download elements
 const download_container = document.querySelector(".download_container");
 const download_id_field = document.querySelector("#download_id");
 const download_passcode_field = document.querySelector("#download_passcode");
 const download_start_button = document.querySelector(".download_start-button");
+
+// 
+// Download
+// 
 
 function openDownloadSettings() {
     main_container_right.style.gridTemplateRows = "3fr 9fr";
@@ -62,4 +73,15 @@ function download() {
             window.location.assign("/download/" + data);
         }
     });
+}
+
+// 
+// Upload
+//
+upload_file_field.addEventListener("change", openUploadSettings);
+
+function openUploadSettings() {
+    main_container_right.style.gridTemplateRows = "3fr 9fr";
+    upload_container.style.display = "block";
+    window.setTimeout(() => upload_container.style.opacity = 1, 1000);
 }
