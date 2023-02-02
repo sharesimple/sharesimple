@@ -19,6 +19,7 @@ const download_start_button = document.querySelector(".download_start-button");
 
 function openDownloadSettings() {
     main_container_right.style.gridTemplateRows = "3fr 9fr";
+    upload_container.style.display = "none";
     download_container.style.display = "block";
     window.setTimeout(() => download_container.style.opacity = 1, 1000);
     download_id_field.addEventListener("input", checkDownloadSettingsInput);
@@ -85,6 +86,7 @@ upload_file_field.addEventListener("change", openUploadSettings);
 function openUploadSettings() {
     main_container_right.style.gridTemplateRows = "3fr 9fr";
     upload_container.style.display = "block";
+    download_container.style.display = "none";
     window.setTimeout(() => upload_container.style.opacity = 1, 1000);
 }
 
@@ -103,6 +105,7 @@ function upload() {
         beforeSend: function() {
             document.documentElement.style.setProperty('--animation-state', "running");
             upload_overlay.style.display = "grid";
+            closeSettings();
         },
         success: function(data) {
             data = JSON.parse(data);
@@ -124,4 +127,15 @@ function upload() {
             console.log(e);
         }
     });
+}
+
+// 
+// General
+// 
+function closeSettings() {
+    main_container_right.style.gridTemplateRows = "3fr 1fr";
+    download_container.style.opacity = 1;
+    upload_container.style.opacity = 1;
+    window.setTimeout(() => download_container.style.display = "none", 1000);
+    window.setTimeout(() => upload_container.style.display = "none", 1000);
 }
