@@ -91,23 +91,26 @@
                     <p>
                         <h2>Passcodeschutz</h2>
                         <label class="switch">
-                            <input type="checkbox" checked="on">
+                            <input type="checkbox" checked>
                             <span class="slider"></span>
                         </label>
                     </p>
                     <p>
                         <h2>Automatisch löschen</h2>
                         <label class="switch">
-                            <input type="checkbox" value="off">
+                            <input type="checkbox" id="autodelete_check" checked>
                             <span class="slider"></span>
                         </label>
+                        <input type="datetime-local" name="autodelete_time" id="autodelete_time">
                     </p>
-                    <button class="upload_start-button" onclick="upload();">
-                        <div class="upload-button_icon">
-                            <i class="fa-solid fa-circle-up"></i>
-                        </div>
-                        <span>Hochladen</span>
-                      </button>
+                    <div id="upload_start-button-container">
+                        <button class="upload_start-button" onclick="upload();">
+                            <div class="upload-button_icon">
+                                <i class="fa-solid fa-circle-up"></i>
+                            </div>
+                            <span>Hochladen</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

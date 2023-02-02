@@ -7,6 +7,8 @@ const upload_file_field = document.querySelector("#upload-input");
 const upload_start_button = document.querySelector(".upload_start-button");
 const upload_button_icon = document.querySelector(".upload-button_icon > i");
 const upload_input = document.querySelector("#upload-input");
+const autodelete_check = document.querySelector("#autodelete_check");
+const autodelete_time = document.querySelector("#autodelete_time");
 // Download elements
 const download_container = document.querySelector(".download_container");
 const download_id_field = document.querySelector("#download_id");
@@ -93,8 +95,10 @@ function openUploadSettings() {
 function upload() {
     let form_data = new FormData();
     form_data.append("upload", upload_input.files[0]);
-    form_data.append("use_passcode", "0");
-    form_data.append("autodelete", "1");
+    if (autodelete_check.checked) form_data.append("use_passcode", 1);
+    else form_data.append("use_passcode", 0);
+    if (autodelete_check.checked) form_data.append("autodelete", new Date(autodelete_time.value).toISOString());
+    else form_data.append("autodelete", false);
     let overlay_open_timestamp = Date.now();
     $.ajax({
         url: "./res/php/upload.php",
@@ -137,6 +141,16 @@ function upload() {
         }
     });
 }
+
+autodelete_check.addEventListener("change", autodeleteCheck);
+
+function autodeleteCheck() {
+    if (autodelete_check.checked) autodelete_time.style.visibility = "visible";
+    else autodelete_time.style.visibility = "hidden";
+}
+autodeleteCheck();
+const currenttime = (new Date((new Date).getTime() + 3 * 24 * 60 * 60 * 1000)).toISOString().split(":");
+autodelete_time.value = currenttime[0] + ":" + currenttime[1];
 
 // 
 // General

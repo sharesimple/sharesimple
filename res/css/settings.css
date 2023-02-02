@@ -29,16 +29,31 @@
 
 /* Upload */
 
+#autodelete_time {
+    background-color: var(--background-color);
+    border: 0;
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-bottom: 1vmin;
+    min-width: calc(4rem * 3);
+    max-width: 100%;
+    display: block;
+    text-align: center;
+}
+
 .switch {
     --button-width: 4em;
     --button-height: 1.75em;
-    --toggle-diameter: 1.5em;
+    --toggle-diameter: 1.5rem;
     --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
     --toggle-shadow-offset: 10px;
     --toggle-wider: 3em;
 }
 
 .slider {
+    cursor: pointer;
     display: inline-block;
     width: var(--button-width);
     height: var(--button-height);
@@ -89,7 +104,6 @@
     background: var(--accent-color);
     color: var(--text-color);
     padding: 0.7em 1em;
-    padding-left: 0.9em;
     display: flex;
     align-items: center;
     border: none;
@@ -97,12 +111,24 @@
     overflow: hidden;
     transition: all 0.2s;
     cursor: pointer;
+    min-width: 10vw;
+    margin: auto;
+}
+
+#upload_start-button-container {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.upload_start-button:hover {
+    min-width: 20vw;
 }
 
 .upload_start-button span {
     display: block;
     margin-left: 0.3em;
-    transition: all 1s cubic-bezier(1, 0, .5, .5);
+    transition: all 0.5s cubic-bezier(1, 0, .5, .5);
 }
 
 .upload-button_icon {
@@ -116,7 +142,7 @@
 }
 
 .upload_start-button:hover .upload-button_icon {
-    transform: translateX(3.5rem) rotate(90deg) scale(1.1);
+    transform: translateX(calc(9vw - 50%)) rotate(90deg) scale(1.1);
 }
 
 .upload_start-button:hover span {
