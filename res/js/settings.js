@@ -95,6 +95,7 @@ function upload() {
     form_data.append("upload", upload_input.files[0]);
     form_data.append("use_passcode", "0");
     form_data.append("autodelete", "1");
+    let overlay_open_timestamp = Date.now();
     $.ajax({
         url: "./res/php/upload.php",
         method: "POST",
@@ -117,10 +118,17 @@ function upload() {
                 console.log("No file id");
                 return;
             }
-            upload_overlay.style.display = "none";
-            document.documentElement.style.setProperty('--animation-state', "paused");
-            console.log("File id: " + data.file_id);
-            console.log("File passcode: " + data.file_passcode);
+            // Check if overlay is already open for at least 3 seconds
+            // This is to prevent the overlay from closing too fast
+            // This is so users are not confused by the overlay closing too fast
+            if (Math.floor((Date.now() - overlay_open_timestamp) / 1000) < 3) {
+                window.setTimeout(() => {
+                    upload_overlay.style.display = "none";
+                    document.documentElement.style.setProperty('--animation-state', "paused");
+                    console.log("File id: " + data.file_id);
+                    console.log("File passcode: " + data.file_passcode);
+                }, 3000 - Math.floor((Date.now() - overlay_open_timestamp) / 1000));
+            }
         },
         error: function(e) {
             console.log("Error");
