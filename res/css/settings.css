@@ -1,0 +1,166 @@
+.settings_container {
+    display: none;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: 1s;
+    position: relative;
+}
+
+.settings_container h1 {
+    margin-top: 0;
+}
+
+
+/* Download */
+
+.download_start-button {
+    font-size: 5rem;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+}
+
+#download_id,
+#download_passcode {
+    outline-color: transparent;
+    width: 6rem;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    background-color: var(--background-color);
+    color: var(--accent2-color);
+    border-color: transparent;
+    border-radius: 0.25rem;
+}
+
+
+/* Upload */
+
+#autodelete_time {
+    background-color: var(--background-color);
+    border: 0;
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-bottom: 1vmin;
+    min-width: calc(4rem * 3);
+    max-width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.switch {
+    --button-width: 4em;
+    --button-height: 1.75em;
+    --toggle-diameter: 1.5rem;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 3em;
+}
+
+.slider {
+    cursor: pointer;
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--background-color);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    transition: 0.3s all ease-in-out;
+}
+
+.slider::after {
+    content: "";
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    background-color: var(--accent-color);
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+}
+
+.switch input[type="checkbox"]:checked+.slider {
+    background-color: var(--accent2-color);
+}
+
+.switch input[type="checkbox"]:checked+.slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+}
+
+.switch input[type="checkbox"] {
+    display: none;
+}
+
+.switch input[type="checkbox"]:active+.slider::after {
+    width: var(--toggle-wider);
+}
+
+.switch input[type="checkbox"]:checked:active+.slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+}
+
+.upload_start-button {
+    font-family: inherit;
+    font-size: 20px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 0.7em 1em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+    min-width: 10vw;
+    margin: auto;
+}
+
+#upload_start-button-container {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.upload_start-button:hover {
+    min-width: 20vw;
+}
+
+.upload_start-button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.5s cubic-bezier(1, 0, .5, .5);
+}
+
+.upload-button_icon {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.5s cubic-bezier(1, 0, .5, .5);
+}
+
+.upload-button_icon i {
+    display: block;
+}
+
+.upload_start-button:hover .upload-button_icon {
+    transform: translateX(calc(9vw - 50%)) rotate(90deg) scale(1.1);
+}
+
+.upload_start-button:hover span {
+    transform: translateX(100vw);
+}
+
+.upload_start-button:active {
+    transform: scale(0.95);
+}

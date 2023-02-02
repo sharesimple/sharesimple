@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharesimple</title>
+    <link rel="icon" type="image/x-icon" href="/res/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/res/img/favicon.ico" />
+    <link rel="stylesheet" href="/res/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/res/fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="/res/css/fonts.css">
+    <link rel="stylesheet" href="/res/css/main.css">
+    <link rel="stylesheet" href="/res/css/parallax.css">
+    <link rel="stylesheet" href="/res/css/grid_desktop.css">
+    <link rel="stylesheet" href="/res/css/grid_mobile.css">
+    <link rel="stylesheet" href="/res/css/settings.css">
+    <link rel="stylesheet" href="/res/css/overlay.css">
+</head>
+
+<body>
+    <div class="upload_overlay">
+        <h1><i class="fa-solid fa-cloud-arrow-up fa-fade" style="--fa-animation-duration: 3s;"></i></h1>
+        <div>
+            <div class="loader circle paused">
+                <svg viewBox="0 0 80 80">
+                    <circle id="test" cx="40" cy="40" r="32"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle paused">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+
+            <div class="loader square paused">
+                <svg viewBox="0 0 80 80">
+                    <rect x="8" y="8" width="64" height="64"></rect>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="parallax-wrap"></div>
+    <main>
+        <div class="panel main_container-upload action_button">
+            <div class="action_button-title">
+                <h1>Hochladen</h1>
+            </div>
+            <div class="action_button-button" onclick="document.querySelector('#upload-input').click();">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <input type="file" id="upload-input">
+        </div>
+        <div class="panel main_container-download action_button">
+            <div class="action_button-title">
+                <h1>Herunterladen</h1>
+            </div>
+            <div class="action_button-button" onclick="openDownloadSettings();">
+                <span id="download_button_container">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                </span>
+            </div>
+        </div>
+        <div class="main_container_right">
+            <div class="panel main_container-title">
+                <h1>ShareSimple</h1>
+                <p>Share files with your friends at ease</p>
+            </div>
+            <div class="panel main_container-settings">
+                <div class="download_container settings_container">
+                    <h1>Datei Herunterladen</h1>
+                    <p>
+                        <label for="download_id">
+                            Download-ID <br>
+                        </label>
+                        <input type="text" name="download_id" id="download_id" placeholder="1234" maxlength="4" value="">
+                    </p>
+                    <p id="download_passcode-container">
+                        <label for="download_passcode">
+                            Passcode <br>
+                        </label>
+                        <input type="password" name="download_passcode" id="download_passcode" placeholder="6789" maxlength="4" value="">
+                    </p>
+                    <div class="download_start-button" onclick="download();">
+                        <i class="fa-solid fa-circle-down"></i>
+                    </div>
+                </div>
+                <div class="upload_container settings_container">
+                    <h1>Datei Hochladen</h1>
+                    <p>
+                        <h2>Passcodeschutz</h2>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </p>
+                    <p>
+                        <h2>Automatisch löschen</h2>
+                        <label class="switch">
+                            <input type="checkbox" id="autodelete_check" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <input type="datetime-local" name="autodelete_time" id="autodelete_time">
+                    </p>
+                    <div id="upload_start-button-container">
+                        <button class="upload_start-button" onclick="upload();">
+                            <div class="upload-button_icon">
+                                <i class="fa-solid fa-circle-up"></i>
+                            </div>
+                            <span>Hochladen</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <script src="/res/js/parallax.js"></script>
+    <script src="/res/js/settings.js"></script>
+    <script src="/res/js/mobile.js"></script>
+</body>
+
+</html>
