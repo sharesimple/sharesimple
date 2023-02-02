@@ -125,8 +125,9 @@ function upload() {
                 window.setTimeout(() => {
                     upload_overlay.style.display = "none";
                     document.documentElement.style.setProperty('--animation-state', "paused");
-                    console.log("File id: " + data.file_id);
-                    console.log("File passcode: " + data.file_passcode);
+                    if (data.file_passcode != null) var alerttext = "File id: " + data.file_id + "\nFile passcode: " + data.file_passcode;
+                    else var alerttext = "File id: " + data.file_id;
+                    alert(alerttext);
                 }, 3000 - Math.floor((Date.now() - overlay_open_timestamp) / 1000));
             }
         },
