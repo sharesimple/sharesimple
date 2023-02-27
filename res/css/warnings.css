@@ -1,0 +1,19 @@
+.warning-overlay {
+    background-color: red;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    width: fit-content;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+    top: 1rem;
+    display: none;
+}
+
+.pwa_warning-overlay {
+    left: 1rem;
+}
+
+.mobile_warning-overlay {
+    right: 1rem;
+}
