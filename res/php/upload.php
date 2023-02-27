@@ -44,7 +44,7 @@
         // Save the uploaded file to the local filesystem
         $file_location = $files_dir . $file_id;
         if ( move_uploaded_file($_FILES['upload']['tmp_name'], $file_location) ) { 
-            exit(json_encode(array('success'=>true,'file_id' => $file_id, 'passcode' => $passcode)));
+            exit(json_encode(array('success'=>true,'file_id' => $file_id, 'file_passcode' => $passcode)));
         } else { 
             exit(json_encode(array('success'=>false)));
         }
