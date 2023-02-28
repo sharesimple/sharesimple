@@ -28,24 +28,33 @@
             $stmt->bind_result($filename);
             $stmt->fetch();
             $stmt->close();
-            $con->close();
-            // Download the file
-            $file = "../" . FILES_DIR . $file_id;
-            if (file_exists($file)) {
-                header('Content-Description: File Transfer');
-                header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename="' . $filename . '"');
-                header('Content-Transfer-Encoding: binary');
-                header('Expires: 0');
-                header('Cache-Control: must-revalidate');
-                header('Pragma: public');
-                header('Content-Length: ' . filesize($file));
-                ob_clean();
-                flush();
-                readfile($file);
-                exit;
+            // Invalidate token (delete from database)
+            if($stmt = $con->prepare("DELETE FROM downloadTokens WHERE token = ?")) {
+                $stmt->bind_param("s", $token);
+                $stmt->execute();
+                $stmt->close();
+                $con->close();
+                // Download the file
+                $file = "../" . FILES_DIR . $file_id;
+                if (file_exists($file)) {
+                    header('Content-Description: File Transfer');
+                    header('Content-Type: application/octet-stream');
+                    header('Content-Disposition: attachment; filename="' . $filename . '"');
+                    header('Content-Transfer-Encoding: binary');
+                    header('Expires: 0');
+                    header('Cache-Control: must-revalidate');
+                    header('Pragma: public');
+                    header('Content-Length: ' . filesize($file));
+                    ob_clean();
+                    flush();
+                    readfile($file);
+                    exit;
+                } else {
+                    die("File does not exist");
+                }
             } else {
-                die("File does not exist");
+                echo "Error: " . $con->error;
+                exit();
             }
         } else {
             echo "Error: " . $con->error;
