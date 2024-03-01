@@ -94,6 +94,8 @@ function openUploadSettings() {
     window.setTimeout(() => upload_container.style.opacity = 1, 1000);
 }
 
+let error_retries = 5;
+
 function upload() {
     let form_data = new FormData();
     form_data.append("upload", upload_input.files[0]);
@@ -140,6 +142,13 @@ function upload() {
         error: function(e) {
             console.log("Error");
             console.log(e);
+            if (error_retries > 0) {
+                window.setTimeout(() => {
+                    error_retries--;
+                    upload();
+                    return;
+                }, 1500);
+            }
         }
     });
 }
