@@ -4,11 +4,11 @@
 document.addEventListener("mousemove", init);
 
 function init() {
-    // On hoverable devices spawn 3 elements
+    // On hoverable devices spawn 10 - 15
     // On non hoverable devices spawn 5 - 10
     let spawns;
-    if (window.matchMedia('(hover:none)').matches) spawns = 3;
-    else spawns = Math.floor(Math.random() * 5) + 5;
+    if (window.matchMedia('(hover:none)').matches) Math.floor(Math.random() * 5) + 5;
+    else spawns = Math.floor(Math.random() * 5) + 10;
     // Spawn the elements
     for (let i = 0; i < spawns; i++) {
         const element = document.createElement("span");
