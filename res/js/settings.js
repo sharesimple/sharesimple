@@ -21,6 +21,7 @@ const download_passcode_container = document.querySelector("#download_passcode-c
 // 
 
 function openDownloadSettings() {
+    open_window = "download";
     main_container_right.style.gridTemplateRows = "3fr 9fr";
     upload_container.style.display = "none";
     download_container.style.display = "block";
@@ -88,6 +89,7 @@ function download() {
 upload_file_field.addEventListener("change", openUploadSettings);
 
 function openUploadSettings() {
+    open_window = "upload";
     main_container_right.style.gridTemplateRows = "3fr 9fr";
     upload_container.style.display = "block";
     download_container.style.display = "none";
