@@ -43,7 +43,7 @@ function checkDownloadSettingsInput() {
             file_passcode: download_passcode_field.value,
             file_id: download_id_field.value
         },
-        success: function(data) {
+        success: function (data) {
             if (data == "NOPASS") {
                 download_start_button.style.visibility = "visible";
                 download_passcode_container.closest("p").style.visibility = "hidden";
@@ -72,7 +72,7 @@ function download() {
             file_id: download_id_field.value,
             file_passcode: download_passcode_field.value
         },
-        success: function(data) {
+        success: function (data) {
             if (!data.startsWith("?DT=")) {
                 download_start_button.style.color = "#f00";
                 return;
@@ -111,12 +111,12 @@ function upload() {
         contentType: false,
         cache: false,
         processData: false,
-        beforeSend: function() {
+        beforeSend: function () {
             document.documentElement.style.setProperty('--animation-state', "running");
             upload_overlay.style.display = "grid";
             closeSettings();
         },
-        success: function(data) {
+        success: function (data) {
             data = JSON.parse(data);
             if (!data.success) {
                 console.log("ERROR");
@@ -133,13 +133,15 @@ function upload() {
                 window.setTimeout(() => {
                     upload_overlay.style.display = "none";
                     document.documentElement.style.setProperty('--animation-state', "paused");
-                    if (data.file_passcode != null) var alerttext = "File id: " + data.file_id + "\nFile passcode: " + data.file_passcode;
-                    else var alerttext = "File id: " + data.file_id;
-                    alert(alerttext);
+                    window.setTimeout(() => {
+                        if (data.file_passcode != null) var alerttext = "File id: " + data.file_id + "\nFile passcode: " + data.file_passcode;
+                        else var alerttext = "File id: " + data.file_id;
+                        alert(alerttext);
+                    }, 100);
                 }, 3000 - Math.floor((Date.now() - overlay_open_timestamp) / 1000));
             }
         },
-        error: function(e) {
+        error: function (e) {
             console.log("Error");
             console.log(e);
             if (error_retries > 0) {
