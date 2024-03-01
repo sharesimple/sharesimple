@@ -148,6 +148,12 @@ function upload() {
                     upload();
                     return;
                 }, 1500);
+            } else {
+                upload_overlay.style.display = "none";
+                document.documentElement.style.setProperty('--animation-state', "paused");
+                console.log("Error retries exceeded");
+                status_notify("Error uploading your file!<br>Please try again later", "negative");
+                return;
             }
         }
     });

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/res/css/settings.css">
     <link rel="stylesheet" href="/res/css/overlay.css">
     <link rel="stylesheet" href="/res/css/warnings.css">
+    <link rel="stylesheet" href="/res/css/status.css">
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/res/img/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/res/img/apple-touch-icon-60x60.png">
@@ -39,6 +40,9 @@
 </head>
 
 <body>
+    <!-- The statusbox -->
+    <div class="status_container status"></div>
+
     <div class="pwa_warning-overlay warning-overlay">Du nutzt aktuell ShareSimple als eine App.<br>Es können fehler auftreten!</div>
     <div class="mobile_warning-overlay warning-overlay">Du nutzt aktuell die Mobile version von ShareSimple.<br>Es können fehler auftreten!</div>
     <div class="upload_overlay">
@@ -138,6 +142,7 @@
         </div>
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <script src="/res/js/status.js"></script>
     <script src="/res/js/parallax.js"></script>
     <script src="/res/js/settings.js"></script>
     <script src="/res/js/mobile.js"></script>
