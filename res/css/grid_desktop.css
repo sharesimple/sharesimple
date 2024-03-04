@@ -9,19 +9,21 @@
         grid-template-areas: "main_container-upload main_container_right" "main_container-download main_container_right";
         position: relative;
     }
+
     /* 
     General
     */
     .panel {
-        background: rgba( 255, 255, 255, 0.1);
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
-        backdrop-filter: blur( 0.5rem);
-        -webkit-backdrop-filter: blur( 10px);
-        border: 1px solid rgba( 255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(0.5rem);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         margin: 1rem;
         border-radius: 0.5rem;
         padding: 0.5rem;
     }
+
     /* 
     Right area
     */
@@ -34,27 +36,33 @@
         grid-area: main_container_right;
         transition: 1.5s all;
     }
+
     .main_container-settings {
         grid-area: main_container-settings;
     }
+
     .main_container-title {
         grid-area: main_container-title;
         display: grid;
         place-items: center;
     }
+
     .main_container-title>h1 {
         font-size: 3rem;
         margin: 0;
     }
+
     /* 
     Action buttons
     */
     .main_container-upload {
         grid-area: main_container-upload;
     }
+
     .main_container-download {
         grid-area: main_container-download;
     }
+
     .action_button {
         display: grid;
         grid-template-columns: auto;
@@ -63,12 +71,14 @@
         grid-auto-flow: row;
         grid-template-areas: "action_button-title" "action_button-button";
     }
+
     .action_button-title {
         grid-area: action_button-title;
         font-size: 1.25rem;
         margin: 0;
         text-align: center;
     }
+
     .action_button-button {
         grid-area: action_button-button;
         font-size: 5rem;
@@ -76,12 +86,15 @@
         place-items: center;
         cursor: pointer;
     }
+
     .action_button-button * {
         cursor: pointer;
     }
+
     #upload-input {
         display: none;
     }
+
     /* 
     Settings area
     */
