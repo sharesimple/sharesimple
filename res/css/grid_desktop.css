@@ -45,6 +45,7 @@
         grid-area: main_container-title;
         display: grid;
         place-items: center;
+        border-top-right-radius: 7.5rem;
     }
 
     .main_container-title>h1 {
