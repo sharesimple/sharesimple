@@ -124,11 +124,15 @@
                     </p>
                     <p>
                         <h2>Automatisch löschen</h2>
-                        <label class="switch">
-                            <input type="checkbox" id="autodelete_check" checked>
-                            <span class="slider"></span>
-                        </label>
-                        <input type="datetime-local" name="autodelete_time" id="autodelete_time">
+                        <span class="autodelete-time" id="autodelete-time-1" onclick="setAutoDelete(1);">1m</span>
+                        <span class="autodelete-time" id="autodelete-time-2" onclick="setAutoDelete(2);">3m</span>
+                        <span class="autodelete-time autodelete-time-active" id="autodelete-time-3" onclick="setAutoDelete(3);">5m</span>
+                        <span class="autodelete-time" id="autodelete-time-4" onclick="setAutoDelete(4);">15m</span>
+                        <span class="autodelete-time" id="autodelete-time-5" onclick="setAutoDelete(5);">30m</span>
+                        <span class="autodelete-time" id="autodelete-time-6" onclick="setAutoDelete(6);">1h</span>
+                        <span class="autodelete-time" id="autodelete-time-7" onclick="setAutoDelete(7);">4h</span>
+                        <span class="autodelete-time" id="autodelete-time-8" onclick="setAutoDelete(8);">1d</span>
+                        <span class="autodelete-time" id="autodelete-time-9" onclick="setAutoDelete(9);">1w</span>
                     </p>
                     <div id="upload_start-button-container">
                         <button class="upload_start-button" onclick="upload();">

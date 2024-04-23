@@ -164,3 +164,15 @@
 .upload_start-button:active {
     transform: scale(0.95);
 }
+
+.autodelete-time {
+    padding: 0.5rem;
+    border: var(--accent-color) 0.1rem solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.autodelete-time-active {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
