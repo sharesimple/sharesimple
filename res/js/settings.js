@@ -28,7 +28,9 @@ function openDownloadSettings() {
     window.setTimeout(() => download_container.style.opacity = 1, 1000);
     download_id_field.addEventListener("input", checkDownloadSettingsInput);
 }
-checkDownloadSettingsInput();
+
+// Only run checkDownloadSettingsInput if download_id_field exists (on the page and not on upload/success)
+if (download_id_field) checkDownloadSettingsInput();
 
 function checkDownloadSettingsInput() {
     if (download_id_field.value.length != 4) {
@@ -79,7 +81,9 @@ function setAutoDelete(time) {
     document.getElementById("autodelete-time-" + time).classList.add("autodelete-time-active");
     autodelete_time = time;
 }
-setAutoDelete(3);
+
+// Only run setAutoDelete if autodelete-time-1 exists (on the page and not on download/success)
+if (document.getElementById("autodelete-time-1")) setAutoDelete(3);
 
 function openUploadSettings() {
     open_window = "upload";
