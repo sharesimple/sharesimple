@@ -16,11 +16,11 @@ if ($stmt = $con->prepare("SELECT passcode, delete_time FROM files WHERE file_id
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows != 1) die("File does not exist");
-    if ($delete_time < time()) die("File has expired");
-    $stmt->bind_result($passcode);
+    $stmt->bind_result($passcode, $delete_time);
     $stmt->fetch();
     $stmt->close();
     $con->close();
+    if ($delete_time < time()) die("File has expired");
     if (!isset($passcode)) exit("NOPASS");
     if ($file_passcode != $passcode) exit("FALSEPASS");
     exit("TRUEPASS");
