@@ -66,21 +66,7 @@ function checkDownloadSettingsInput() {
 }
 
 function download() {
-    $.ajax({
-        url: "/res/php/getDownloadToken.php",
-        type: "POST",
-        data: {
-            file_id: download_id_field.value,
-            file_passcode: download_passcode_field.value
-        },
-        success: function (data) {
-            if (!data.startsWith("?DT=")) {
-                download_start_button.style.color = "#f00";
-                return;
-            }
-            window.location.assign("/download/" + data);
-        }
-    });
+    location.assign("/download/?id=" + download_id_field.value + "&pass=" + download_passcode_field.value);
 }
 
 // 
