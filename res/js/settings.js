@@ -66,7 +66,7 @@ function checkDownloadSettingsInput() {
 }
 
 function download() {
-    location.assign("/download/?id=" + download_id_field.value + "&pass=" + download_passcode_field.value);
+    location.assign("/download/?id=" + download_id_field.value + (download_passcode_field.value ? "&pass=" + download_passcode_field.value : ""));
 }
 
 // 
