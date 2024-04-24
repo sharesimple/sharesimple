@@ -7,6 +7,7 @@ const upload_file_field = document.querySelector("#upload-input");
 const upload_start_button = document.querySelector(".upload_start-button");
 const upload_button_icon = document.querySelector(".upload-button_icon > i");
 const upload_input = document.querySelector("#upload-input");
+const password_check = document.querySelector("#password_check");
 var autodelete_time;
 // Download elements
 const download_container = document.querySelector(".download_container");
@@ -142,7 +143,7 @@ function upload() {
     // 
     let form_data = new FormData();
     form_data.append("upload", upload_input.files[0]);
-    if (autodelete_check.checked) form_data.append("use_passcode", 1);
+    if (password_check.checked) form_data.append("use_passcode", 1);
     else form_data.append("use_passcode", 0);
     form_data.append("autodelete", deletion_time.toISOString());
     let overlay_open_timestamp = Date.now();
