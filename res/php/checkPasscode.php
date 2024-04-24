@@ -11,11 +11,12 @@ if (mysqli_connect_errno()) {
 // Check if file exists
 $file_id = $_POST['file_id'];
 $file_passcode = $_POST['file_passcode'];
-if ($stmt = $con->prepare("SELECT passcode FROM files WHERE file_id = ?")) {
+if ($stmt = $con->prepare("SELECT passcode, delete_time FROM files WHERE file_id = ?")) {
     $stmt->bind_param("s", $file_id);
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows != 1) die("File does not exist");
+    if ($delete_time < time()) die("File has expired");
     $stmt->bind_result($passcode);
     $stmt->fetch();
     $stmt->close();
