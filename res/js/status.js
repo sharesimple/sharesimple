@@ -15,7 +15,7 @@ function status_style_init() {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = 'https://use.fontawesome.com/releases/v5.7.1/css/all.css';
+    link.href = '/res/fontawesome/css/all.css';
     link.media = 'all';
     head.appendChild(link);
     // 
