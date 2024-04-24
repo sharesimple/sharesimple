@@ -9,15 +9,6 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-// Remove expired download tokens
-if ($stmt = $con->prepare("DELETE FROM downloadTokens WHERE expire_time < NOW()")) {
-    $stmt->execute();
-    $stmt->close();
-} else {
-    echo "Error: " . $con->error;
-    exit();
-}
-
 // Get all files due to expire
 if ($stmt = $con->prepare("SELECT file_id FROM files WHERE delete_time < NOW()")) {
     $stmt->execute();

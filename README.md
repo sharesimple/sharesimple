@@ -27,3 +27,7 @@ Currently there is no way to set a database port.
 
 - Even though there are passcodes for files, currently the files are not encrypted.
 - The directory for the files is not protected in any way. It should be outside of your websites document root.
+
+# Licenses
+Used libraries:
+- qrcodejs: https://github.com/davidshimjs/qrcodejs (MIT License)

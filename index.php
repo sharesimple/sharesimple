@@ -1,3 +1,7 @@
+<?php
+require($_SERVER['DOCUMENT_ROOT'] . "/../config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -116,23 +120,23 @@
                 <div class="upload_container settings_container">
                     <h1>Datei Hochladen</h1>
                     <p>
-                        <h2>Passcodeschutz</h2>
-                        <label class="switch">
-                            <input type="checkbox" id="password_check" checked>
-                            <span class="slider"></span>
-                        </label>
+                    <h2>Passcodeschutz</h2>
+                    <label class="switch">
+                        <input type="checkbox" id="password_check" checked>
+                        <span class="slider"></span>
+                    </label>
                     </p>
                     <p>
-                        <h2>Automatisch löschen</h2>
-                        <span class="autodelete-time" id="autodelete-time-1" onclick="setAutoDelete(1);">1m</span>
-                        <span class="autodelete-time" id="autodelete-time-2" onclick="setAutoDelete(2);">3m</span>
-                        <span class="autodelete-time autodelete-time-active" id="autodelete-time-3" onclick="setAutoDelete(3);">5m</span>
-                        <span class="autodelete-time" id="autodelete-time-4" onclick="setAutoDelete(4);">15m</span>
-                        <span class="autodelete-time" id="autodelete-time-5" onclick="setAutoDelete(5);">30m</span>
-                        <span class="autodelete-time" id="autodelete-time-6" onclick="setAutoDelete(6);">1h</span>
-                        <span class="autodelete-time" id="autodelete-time-7" onclick="setAutoDelete(7);">4h</span>
-                        <span class="autodelete-time" id="autodelete-time-8" onclick="setAutoDelete(8);">1d</span>
-                        <span class="autodelete-time" id="autodelete-time-9" onclick="setAutoDelete(9);">1w</span>
+                    <h2>Automatisch löschen</h2>
+                    <span class="autodelete-time" id="autodelete-time-1" onclick="setAutoDelete(1);">1m</span>
+                    <span class="autodelete-time" id="autodelete-time-2" onclick="setAutoDelete(2);">3m</span>
+                    <span class="autodelete-time autodelete-time-active" id="autodelete-time-3" onclick="setAutoDelete(3);">5m</span>
+                    <span class="autodelete-time" id="autodelete-time-4" onclick="setAutoDelete(4);">15m</span>
+                    <span class="autodelete-time" id="autodelete-time-5" onclick="setAutoDelete(5);">30m</span>
+                    <span class="autodelete-time" id="autodelete-time-6" onclick="setAutoDelete(6);">1h</span>
+                    <span class="autodelete-time" id="autodelete-time-7" onclick="setAutoDelete(7);">4h</span>
+                    <span class="autodelete-time" id="autodelete-time-8" onclick="setAutoDelete(8);">1d</span>
+                    <span class="autodelete-time" id="autodelete-time-9" onclick="setAutoDelete(9);">1w</span>
                     </p>
                     <div id="upload_start-button-container">
                         <button class="upload_start-button" onclick="upload();">
@@ -147,9 +151,11 @@
         </div>
     </main>
     <aside>
-        <div id="infobutton" onclick="window.open('/rechtliches.html', '_blank');">
-            <i class="fas fa-info-circle"></i>
-        </div>
+        <?php if (null !== INFO_URL) { ?>
+            <div id="infobutton" onclick="window.open('<?= INFO_URL ?>', '_blank');">
+                <i class="fas fa-info-circle"></i>
+            </div>
+        <?php } ?>
     </aside>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="/res/js/enter.js"></script>
@@ -157,6 +163,10 @@
     <script src="/res/js/parallax.js"></script>
     <script src="/res/js/settings.js"></script>
     <script src="/res/js/mobile.js"></script>
+    <script>
+        <?php if ($_GET["p"] == "down") echo "openDownloadSettings();"; ?>
+        <?php if ($_GET["p"] == "up") echo "document.querySelector('#upload-input').click();"; ?>
+    </script>
 </body>
 
 </html>
