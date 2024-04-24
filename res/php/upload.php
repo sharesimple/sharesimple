@@ -1,6 +1,6 @@
 <?php
 // Get Config
-require_once $_SERVER["DOCUMENT_ROOT"] . '/config.php';
+require_once($_SERVER["DOCUMENT_ROOT"] . '/../config.php');
 
 // Connect to database
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -9,7 +9,7 @@ if (mysqli_connect_errno()) {
 }
 
 // Choose where to save the uploaded file
-$files_dir = "../../" . FILES_DIR;
+$files_dir = $_SERVER["DOCUMENT_ROOT"] . FILES_DIR;
 
 $passcode = null;
 if ($_POST['use_passcode']) $passcode = strval(rand(1000, 9999));
