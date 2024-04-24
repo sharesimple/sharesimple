@@ -93,7 +93,7 @@ function setAutoDelete(time) {
     document.getElementById("autodelete-time-" + time).classList.add("autodelete-time-active");
     autodelete_time = time;
 }
-setAutoDelete("3");
+setAutoDelete(3);
 
 function openUploadSettings() {
     open_window = "upload";
