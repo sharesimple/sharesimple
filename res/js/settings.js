@@ -124,7 +124,7 @@ function upload() {
                 console.log("No file id");
                 return;
             }
-            // Check if overlay is already open for at least 3 seconds
+            // Check if overlay is already open for at least 2 seconds
             // This is to prevent the overlay from closing too fast
             // This is so users are not confused by the overlay closing too fast
             if (Math.floor((Date.now() - overlay_open_timestamp) / 1000) < 3) {
@@ -132,11 +132,9 @@ function upload() {
                     upload_overlay.style.display = "none";
                     document.documentElement.style.setProperty('--animation-state', "paused");
                     window.setTimeout(() => {
-                        if (data.file_passcode != null) var alerttext = "File id: " + data.file_id + "\nFile passcode: " + data.file_passcode;
-                        else var alerttext = "File id: " + data.file_id;
-                        alert(alerttext);
+                        location.assign("/upload/success/?id=" + data.file_id + (data.file_passcode ? "&pw=" + data.file_passcode : ""));
                     }, 100);
-                }, 3000 - Math.floor((Date.now() - overlay_open_timestamp) / 1000));
+                }, 2000 - Math.floor((Date.now() - overlay_open_timestamp) / 1000));
             }
         },
         error: function (e) {
