@@ -92,46 +92,11 @@ function openUploadSettings() {
 let error_retries = 5;
 
 function upload() {
-    let deletion_time;
-    switch (autodelete_time) {
-        case 1:
-            deletion_time = new Date(Date.now() + 60000);
-            break;
-        case 2:
-            deletion_time = new Date(Date.now() + 180000);
-            break;
-        case 3:
-            deletion_time = new Date(Date.now() + 300000);
-            break;
-        case 4:
-            deletion_time = new Date(Date.now() + 600000);
-            break;
-        case 5:
-            deletion_time = new Date(Date.now() + 900000);
-            break;
-        case 6:
-            deletion_time = new Date(Date.now() + 1800000);
-            break;
-        case 7:
-            deletion_time = new Date(Date.now() + 3600000);
-            break;
-        case 8:
-            deletion_time = new Date(Date.now() + 14400000);
-            break;
-        case 9:
-            deletion_time = new Date(Date.now() + 86400000);
-            break;
-        case 10:
-            deletion_time = new Date(Date.now() + 604800000);
-            break;
-    }
-
-    // 
     let form_data = new FormData();
     form_data.append("upload", upload_input.files[0]);
     if (password_check.checked) form_data.append("use_passcode", 1);
     else form_data.append("use_passcode", 0);
-    form_data.append("autodelete", deletion_time.toISOString());
+    form_data.append("autodelete", autodelete_time);
     let overlay_open_timestamp = Date.now();
     $.ajax({
         url: "./res/php/upload.php",

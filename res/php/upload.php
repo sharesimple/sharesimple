@@ -17,6 +17,44 @@ if ($_POST['use_passcode']) $passcode = strval(rand(1000, 9999));
 $autodelete = null;
 if ($_POST['autodelete']) $autodelete = $_POST['autodelete'];
 
+// Switch autodelete to a timestamp
+$deletion_time;
+switch ($autodelete) {
+    case 1:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+1 minute'));
+        break;
+    case 2:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+3 minutes'));
+        break;
+    case 3:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+5 minutes'));
+        break;
+    case 4:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+10 minutes'));
+        break;
+    case 5:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+15 minutes'));
+        break;
+    case 6:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+30 minutes'));
+        break;
+    case 7:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+1 hour'));
+        break;
+    case 8:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+4 hours'));
+        break;
+    case 9:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+24 hours'));
+        break;
+    case 10:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+7 days'));
+        break;
+    default:
+        $deletion_time = date('Y-m-d H:i:s', strtotime('+15 minutes'));
+        break;
+}
+
 // Generate a file id
 $generating_file_id = true;
 $file_id = strval(rand(1000, 9999));
@@ -36,7 +74,7 @@ while ($generating_file_id) {
 
 // Insert file into database
 if ($stmt = $con->prepare("INSERT INTO files (file_id, passcode, filename, delete_time) VALUES (?, ?, ?, ?)")) {
-    $stmt->bind_param("ssss", $file_id, $passcode, $_FILES['upload']['name'], $autodelete);
+    $stmt->bind_param("ssss", $file_id, $passcode, $_FILES['upload']['name'], $deletion_time);
     $stmt->execute();
     $stmt->close();
     $con->close();
