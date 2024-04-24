@@ -20,7 +20,7 @@ if ($stmt = $con->prepare("SELECT passcode, delete_time FROM files WHERE file_id
     $stmt->fetch();
     $stmt->close();
     $con->close();
-    if ($delete_time < time()) die("File has expired");
+    if (strtotime($delete_time) < time()) die("File has expired");
     if (!isset($passcode)) exit("NOPASS");
     if ($file_passcode != $passcode) exit("FALSEPASS");
     exit("TRUEPASS");
