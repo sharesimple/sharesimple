@@ -163,6 +163,10 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../config.php");
     <script src="/res/js/parallax.js"></script>
     <script src="/res/js/settings.js"></script>
     <script src="/res/js/mobile.js"></script>
+    <script>
+        <?php if ($_GET["p"] == "down") echo "openDownloadSettings();"; ?>
+        <?php if ($_GET["p"] == "up") echo "document.querySelector('#upload-input').click();"; ?>
+    </script>
 </body>
 
 </html>
