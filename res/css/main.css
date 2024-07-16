@@ -79,6 +79,13 @@ body {
     grid-template-areas: "title" "icon";
     width: 100%;
     height: 100%;
+    border-radius: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.actions>div:hover {
+    background-color: #dddddd;
 }
 
 .actions>div>h2 {
