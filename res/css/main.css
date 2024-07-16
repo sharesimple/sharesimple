@@ -70,7 +70,7 @@ body {
     grid-area: tunnel;
 }
 
-.actions>div {
+.actions>a {
     background-color: #ffffff;
     padding: 1rem;
     display: grid;
@@ -82,20 +82,21 @@ body {
     border-radius: 1rem;
     cursor: pointer;
     user-select: none;
+    text-decoration: none;
 }
 
-.actions>div:hover {
+.actions>a:hover {
     background-color: #dddddd;
 }
 
-.actions>div>h2 {
+.actions>a>h2 {
     grid-area: title;
     color: #3f48cc;
     font-size: 2rem;
     text-align: center;
 }
 
-.actions>div>div {
+.actions>a>div {
     grid-area: icon;
     display: grid;
     place-items: center;
@@ -116,4 +117,36 @@ footer {
     font-weight: 400;
     display: grid;
     place-items: center;
+}
+
+@media screen and (max-height: 600px) {
+    .actions>a>h2 {
+        font-size: 1.5rem;
+    }
+
+    .actions {
+        padding: 0 1.5rem 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    footer {
+        font-size: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .actions>a>h2 {
+        font-size: 1.5rem;
+    }
+
+    .actions {
+        padding: 0 1.5rem 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
 }
