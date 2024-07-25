@@ -112,11 +112,15 @@ legend {
 footer {
     grid-area: footer;
     background-color: var(--background2-color);
-    color: var(--text2-color);
+    color: var(--text-color);
     font-size: 1rem;
     font-weight: 400;
     display: grid;
     place-items: center;
+}
+
+footer a {
+    color: var(--text2-color);
 }
 
 @media screen and (max-height: 600px) {
