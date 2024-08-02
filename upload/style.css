@@ -86,12 +86,21 @@ input[type="file"] {
     display: none;
 }
 
+input[type="checkbox"] {
+    accent-color: var(--accent-color);
+}
+
+hr {
+    border: 1px solid #336;
+}
+
 select {
     text-align: center;
-    border: #fff;
+    border: #888 1px solid;
+    border-radius: 0.5rem;
     width: fit-content;
     color: #fff;
-    background: var(--background2-color);
+    background: var(--accent-color);
     cursor: pointer;
 }
 
