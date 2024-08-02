@@ -57,7 +57,7 @@ if ($deletion != null && $deletion < time()) {
 // Check where to redirect
 if ($code == null) {
     // Redirect to download
-    header("Location: /api/download.php/" . $file_id);
+    header("Location: /api/download.php?id=" . $file_id);
     exit;
 } else {
     // Redirect to code input with file_id
