@@ -154,3 +154,9 @@ footer a {
         font-size: 3rem;
     }
 }
+
+@media screen and (min-height: 750px) {
+    body {
+        grid-template-rows: 1fr 3fr 5rem;
+    }
+}
