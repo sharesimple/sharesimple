@@ -46,6 +46,11 @@ body {
     background-color: var(--accent-color);
 }
 
+.title a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
 .actions {
     padding: 0 2.5rem 4.5rem 2.5rem;
     grid-area: actions;

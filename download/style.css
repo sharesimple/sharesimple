@@ -46,6 +46,11 @@ body {
     background-color: var(--accent-color);
 }
 
+.title a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
 main {
     padding: 0.5rem;
     color: #000;
