@@ -6,7 +6,7 @@
 
 // Check if file is uploaded
 if (!isset($_FILES["file"])) {
-    header("Location: /");
+    echo json_encode(array("error" => "missing-fields", "error_human" => "One or more required fields are missing", "error_detail" => "file is missing"));
     exit;
 }
 
@@ -25,7 +25,7 @@ else $delete_after = 10080;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/config.php";
 $con = mysqli_connect($config["db"]["host"], $config["db"]["username"], $config["db"]["password"], $config["db"]["dbname"]);
 if (mysqli_connect_errno()) {
-    header("Location: /");
+    echo json_encode(array("error" => "internal", "error_human" => "Internal error, try again later!"));
     exit;
 }
 

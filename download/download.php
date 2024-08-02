@@ -10,25 +10,25 @@ if (
     !isset($_POST["number-code-2"]) ||
     !isset($_POST["number-code-3"])
 ) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
     exit;
 }
 $file_code = $_POST["number-code-0"] . $_POST["number-code-1"] . $_POST["number-code-2"] . $_POST["number-code-3"];
 // Check if code is valid (4 digits)
 if (!preg_match("/^[0-9]{4}$/", $file_code)) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
     exit;
 }
 
 // Check if file_id is set and valid
 if (!isset($_POST["file_id"])) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
     exit;
 }
 $file_id = $_POST["file_id"];
 // Check if id is valid (4 digits)
 if (!preg_match("/^[0-9]{4}$/", $file_id)) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
     exit;
 }
 

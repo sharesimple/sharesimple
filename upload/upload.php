@@ -6,7 +6,13 @@
 
 // Check if file is uploaded
 if (!isset($_FILES["file"])) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
+    exit;
+}
+
+// Check if file is empty
+if ($_FILES["file"]["size"] == 0) {
+    header("Location: /?error=missing-fields");
     exit;
 }
 
@@ -25,7 +31,7 @@ else $delete_after = 10080;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/config.php";
 $con = mysqli_connect($config["db"]["host"], $config["db"]["username"], $config["db"]["password"], $config["db"]["dbname"]);
 if (mysqli_connect_errno()) {
-    header("Location: /");
+    header("Location: /?error=internal");
     exit;
 }
 
@@ -73,6 +79,7 @@ if ($stmt = $con->prepare("INSERT INTO files (id, code, name, deletion) VALUES (
     if (move_uploaded_file($_FILES['file']['tmp_name'], $file_location)) {
         exit(json_encode(array('success' => true, 'id' => $file_id, 'passcode' => $code, 'deletion' => $deletion)));
     } else {
-        exit(json_encode(array('success' => false)));
+        header("Location: /?error=internal");
+        exit;
     }
 }

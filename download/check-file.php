@@ -10,13 +10,13 @@ if (
     !isset($_POST["number-code-2"]) ||
     !isset($_POST["number-code-3"])
 ) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
     exit;
 }
 $file_id = $_POST["number-code-0"] . $_POST["number-code-1"] . $_POST["number-code-2"] . $_POST["number-code-3"];
 // Check if code is valid (4 digits)
 if (!preg_match("/^[0-9]{4}$/", $file_id)) {
-    header("Location: /");
+    header("Location: /?error=missing-fields");
     exit;
 }
 
@@ -27,7 +27,7 @@ if (!preg_match("/^[0-9]{4}$/", $file_id)) {
 require_once $_SERVER["DOCUMENT_ROOT"] . "/config.php";
 $con = mysqli_connect($config["db"]["host"], $config["db"]["username"], $config["db"]["password"], $config["db"]["dbname"]);
 if (mysqli_connect_errno()) {
-    header("Location: /");
+    header("Location: /?error=internal");
     exit;
 }
 
@@ -46,12 +46,12 @@ $query->fetch();
 $query->close();
 // Check if file exists
 if ($rows == 0) {
-    header("Location: /");
+    header("Location: /?error=file");
     exit;
 }
 // Check if file is already over deletion time
 if ($deletion != null && $deletion < time()) {
-    header("Location: /");
+    header("Location: /?error=file");
     exit;
 }
 // Check where to redirect
