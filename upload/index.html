@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sharesimple</title>
+        <link rel="stylesheet" href="style.css" />
+        <!-- Icons -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="/res/img/apple-touch-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="/res/img/apple-touch-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="/res/img/apple-touch-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="/res/img/apple-touch-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="/res/img/apple-touch-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="/res/img/apple-touch-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="/res/img/apple-touch-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="/res/img/apple-touch-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/res/img/apple-touch-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/res/img/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/res/img/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/res/site.webmanifest" />
+        <link
+            rel="mask-icon"
+            href="/res/img/safari-pinned-tab.svg"
+            color="#5bbad5"
+        />
+        <link rel="shortcut icon" href="/res/img/favicon.ico" />
+        <meta name="apple-mobile-web-app-title" content="ShareSimple" />
+        <meta name="application-name" content="ShareSimple" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-config" content="/res/browserconfig.xml" />
+        <meta name="theme-color" content="#191D3F" />
+    </head>
+
+    <body>
+        <div class="title"><a href="/">ShareSimple</a></div>
+        <main>
+            <form
+                action="upload.php"
+                method="post"
+                autocomplete="off"
+                enctype="multipart/form-data"
+            >
+                <fieldset>
+                    <legend>Upload a file</legend>
+                    <input type="file" name="file" id="file" required />
+                    <label for="file">Choose a file</label>
+                    <div class="options">
+                        <input
+                            type="checkbox"
+                            name="passcode"
+                            id="passcode"
+                            autocomplete="off"
+                            checked
+                        />
+                        <label for="passcode">Protect with passcode</label>
+                        <br />
+                        <hr />
+                        <label for="delete_after">Delete after</label>
+                        <select name="delete_after" id="delete_after">
+                            <option value="5">5 Minutes</option>
+                            <option value="30">30 Minutes</option>
+                            <option value="360">6 Hours</option>
+                            <option value="1440" selected>1 Day</option>
+                            <option value="10080">1 Week</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Upload" />
+                </fieldset>
+            </form>
+        </main>
+        <footer>
+            <div>
+                Made with ❤️ in Germany
+                <span>&CenterDot;</span>
+                <a href="/legal/impressum">Impressum</a>
+                <span>&CenterDot;</span>
+                <a href="/legal/datenschutz">Datenschutzerkl&auml;rung</a>
+                <span>&CenterDot;</span>
+                <a href="/legal/agb">AGB</a>
+            </div>
+        </footer>
+        <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    </body>
+</html>

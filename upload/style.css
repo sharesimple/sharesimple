@@ -32,9 +32,9 @@ body {
 
 body {
     display: grid;
-    grid-template-rows: 1fr 3fr 3rem;
+    grid-template-rows: 1fr 3fr 2rem;
     grid-template-columns: 1fr;
-    grid-template-areas: "title" "actions" "footer";
+    grid-template-areas: "title" "main" "footer";
 }
 
 .title {
@@ -51,81 +51,90 @@ body {
     text-decoration: none;
 }
 
-.actions {
-    padding: 0 2.5rem 4.5rem 2.5rem;
-    grid-area: actions;
+main {
+    padding: 0.5rem;
+    color: #000;
+    grid-area: main;
     background: linear-gradient(to bottom, var(--accent-color) 50%, var(--background-color) 50%);
     display: grid;
     place-items: center;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "download upload tunnels";
-    gap: 2.5rem;
 }
 
-.download {
-    grid-area: download;
-}
-
-.upload {
-    grid-area: upload;
-}
-
-.tunnels {
-    grid-area: tunnels;
-    position: relative;
-    background-color: #444 !important;
-    color: #fff !important;
-    cursor: not-allowed !important;
-}
-
-.tunnels::before {
-    content: "Coming soon!";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    color: #fff;
-}
-
-.actions>a {
-    background-color: #ffffff;
-    padding: 1rem;
-    display: grid;
-    grid-template-rows: 1fr 2fr;
-    grid-template-columns: 1fr;
-    grid-template-areas: "title" "icon";
-    width: 100%;
-    height: 100%;
+main>form {
+    background-color: #fff;
     border-radius: 1rem;
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
+    padding: 1rem;
+    width: fit-content;
+    height: fit-content;
 }
 
-.actions>a:hover {
-    background-color: #dddddd;
+fieldset {
+    border: 1px solid var(--accent-color);
+    padding: 2rem;
+    border-radius: 0.5rem;
 }
 
-.actions>a>h2 {
-    grid-area: title;
-    color: #3f48cc;
-    font-size: 2rem;
+label[for="file"] {
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1.5rem;
     text-align: center;
+    border: none;
+    color: #fff;
+    border-radius: 0.5rem;
+    background: linear-gradient(145deg, var(--background-color), var(--background2-color));
+    cursor: pointer;
 }
 
-.actions>a>div {
-    grid-area: icon;
-    display: grid;
-    place-items: center;
+input[type="file"] {
+    display: none;
 }
 
-svg {
-    color: var(--accent-color);
-    aspect-ratio: 1/1;
-    width: 50%;
+input[type="checkbox"] {
+    accent-color: var(--accent-color);
+}
+
+hr {
+    border: 1px solid #336;
+}
+
+select {
+    text-align: center;
+    border: #888 1px solid;
+    border-radius: 0.5rem;
+    width: fit-content;
+    color: #fff;
+    background: var(--accent-color);
+    cursor: pointer;
+}
+
+.options {
+    background: linear-gradient(145deg, var(--background-color), var(--background2-color));
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    border: none;
+    margin-top: 1rem;
+}
+
+input[type="submit"] {
+    margin-top: 1rem;
+    width: 100%;
+    min-width: 400px;
+    height: 3rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--accent-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+legend {
     margin: auto;
+    padding: 0 0.5rem;
 }
 
 footer {
@@ -140,18 +149,6 @@ footer {
 
 footer a {
     color: var(--text2-color);
-}
-
-#error {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #bb2222;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 0.5rem;
 }
 
 @media screen and (max-height: 600px) {
@@ -183,13 +180,6 @@ footer a {
 
     .title {
         font-size: 3rem;
-    }
-}
-
-@media screen and (min-width: 1750px) {
-    .actions {
-        padding: 0 15vw 4.5rem 15vw;
-        gap: 5rem;
     }
 }
 
