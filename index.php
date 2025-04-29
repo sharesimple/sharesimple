@@ -58,7 +58,7 @@ html_start:
     <?php endif; ?>
     <div class="title"><a href="/">ShareSimple</a></div>
     <div class="actions">
-        <a href="/download" class="download">
+        <a href="/download/" class="download">
             <!-- <div > -->
             <h2>Download</h2>
             <!-- Icon by heroicons.com -->
@@ -67,7 +67,7 @@ html_start:
             </svg>
             <!-- </div> -->
         </a>
-        <a href="/upload" class="upload">
+        <a href="/upload/" class="upload">
             <h2>Upload</h2>
             <!-- Icon by heroicons.com -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
