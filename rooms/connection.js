@@ -30,10 +30,11 @@ function connectWebSocket(roomId) {
                 document.getElementById('roomTitle').textContent = `Welcome to room: ${roomId}`;
                 history.pushState({}, '', `${window.location.pathname}?id=${roomId}`); // Push state to include room ID in URL
             } else if (type === 'ready') {
-                readyStateDisplay.textContent = 'Ready! Two or more users in the room.';
+                clients = payload.clients;
+                readyStateDisplay.textContent = 'Ready! You are connected to ' + (clients - 1) + ' other ' + (clients > 2 ? 'users' : 'user') + '.';
                 readyStateIcon.classList.add('ready');
             } else if (type === 'notReady') {
-                readyStateDisplay.textContent = 'Not Ready. Waiting for at least two users.';
+                readyStateDisplay.textContent = 'Not Ready. Waiting for another user.';
                 readyStateIcon.classList.remove('ready');
             } else if (type === 'file') {
                 // Basic display of received file data (you'll need to handle binary data properly)
