@@ -54,11 +54,11 @@ html_start:
 
 <body>
     <?php if (isset($error_message)) : ?>
-        <div id="error"><?= $error_message ?></div>
+    <div id="error"><?= $error_message ?></div>
     <?php endif; ?>
     <div class="title"><a href="/">ShareSimple</a></div>
     <div class="actions">
-        <a href="/download" class="download">
+        <a href="/download/" class="download">
             <!-- <div > -->
             <h2>Download</h2>
             <!-- Icon by heroicons.com -->
@@ -67,19 +67,28 @@ html_start:
             </svg>
             <!-- </div> -->
         </a>
-        <a href="/upload" class="upload">
+        <a href="/upload/" class="upload">
             <h2>Upload</h2>
             <!-- Icon by heroicons.com -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
             </svg>
         </a>
-        <a href="" class="tunnels">
-            <h2>Tunnels</h2>
+        <a href="/rooms/join/" class="rooms" id="buttonRooms">
+            <h2>Rooms</h2>
             <!-- Icon by heroicons.com -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
             </svg>
+            <h3 class="incompatibleNote" id="incompatibleNote">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#EC0016" class="size-6">
+                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="text" id="incompatibleText">Not compatible with your device!</div>
+                <!-- This is "not device-compatible" by default, for devices without JS enabled. Network checks done later! -->
+            </h3>
         </a>
     </div>
     <footer>
@@ -94,6 +103,35 @@ html_start:
         </div>
     </footer>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <script>
+    document.getElementById("incompatibleText").innerText = "Checking compatibility, please wait...";
+    const serverAddress = 'wss://rooms.sharesimple.de:443';
+    // Check if the used device is capable of connecting to the websocket server
+    // If so, hide the incompatible note
+    if (!window.WebSocket) {
+        document.getElementById("incompatibleText").innerText = "Not compatible with your device!";
+        document.getElementById("buttonRooms").classList.add("disabled");
+    } else {
+        ws = new WebSocket(serverAddress);
+        ws.onopen = function() {
+            // Connection opened
+            console.log("WebSocket connection opened");
+            document.getElementById("incompatibleNote").style.display = "none";
+        };
+        ws.onclose = function() {
+            // Connection closed
+            console.log("WebSocket connection closed");
+            document.getElementById("incompatibleText").innerText = "Blocked by your network! ";
+            document.getElementById("buttonRooms").classList.add("disabled");
+        };
+        ws.onerror = function(error) {
+            // Error occurred
+            console.error("WebSocket error:", error);
+            document.getElementById("incompatibleText").innerText = "Blocked by your network! ";
+            document.getElementById("buttonRooms").classList.add("disabled");
+        };
+    }
+    </script>
 </body>
 
 </html>
