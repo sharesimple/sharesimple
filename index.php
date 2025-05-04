@@ -54,7 +54,7 @@ html_start:
 
 <body>
     <?php if (isset($error_message)) : ?>
-        <div id="error"><?= $error_message ?></div>
+    <div id="error"><?= $error_message ?></div>
     <?php endif; ?>
     <div class="title"><a href="/">ShareSimple</a></div>
     <div class="actions">
@@ -95,7 +95,7 @@ html_start:
         <div>
             Made with ❤️ in Germany
             <span>&CenterDot;</span>
-            <a href="https://protzen-it.de/impressum-ext/">Impressum</a>
+            <a href="https://protzen-it.de/impressum-ext/" target="_blank">Impressum</a>
             <span>&CenterDot;</span>
             <a href="/legal/datenschutz">Datenschutzerkl&auml;rung</a>
             <span>&CenterDot;</span>
@@ -104,33 +104,33 @@ html_start:
     </footer>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script>
-        document.getElementById("incompatibleText").innerText = "Checking compatibility, please wait...";
-        const serverAddress = 'wss://rooms.sharesimple.de:443';
-        // Check if the used device is capable of connecting to the websocket server
-        // If so, hide the incompatible note
-        if (!window.WebSocket) {
-            document.getElementById("incompatibleText").innerText = "Not compatible with your device!";
+    document.getElementById("incompatibleText").innerText = "Checking compatibility, please wait...";
+    const serverAddress = 'wss://rooms.sharesimple.de:443';
+    // Check if the used device is capable of connecting to the websocket server
+    // If so, hide the incompatible note
+    if (!window.WebSocket) {
+        document.getElementById("incompatibleText").innerText = "Not compatible with your device!";
+        document.getElementById("buttonRooms").classList.add("disabled");
+    } else {
+        ws = new WebSocket(serverAddress);
+        ws.onopen = function() {
+            // Connection opened
+            console.log("WebSocket connection opened");
+            document.getElementById("incompatibleNote").style.display = "none";
+        };
+        ws.onclose = function() {
+            // Connection closed
+            console.log("WebSocket connection closed");
+            document.getElementById("incompatibleText").innerText = "Blocked by your network! ";
             document.getElementById("buttonRooms").classList.add("disabled");
-        } else {
-            ws = new WebSocket(serverAddress);
-            ws.onopen = function() {
-                // Connection opened
-                console.log("WebSocket connection opened");
-                document.getElementById("incompatibleNote").style.display = "none";
-            };
-            ws.onclose = function() {
-                // Connection closed
-                console.log("WebSocket connection closed");
-                document.getElementById("incompatibleText").innerText = "Blocked by your network! ";
-                document.getElementById("buttonRooms").classList.add("disabled");
-            };
-            ws.onerror = function(error) {
-                // Error occurred
-                console.error("WebSocket error:", error);
-                document.getElementById("incompatibleText").innerText = "Blocked by your network! ";
-                document.getElementById("buttonRooms").classList.add("disabled");
-            };
-        }
+        };
+        ws.onerror = function(error) {
+            // Error occurred
+            console.error("WebSocket error:", error);
+            document.getElementById("incompatibleText").innerText = "Blocked by your network! ";
+            document.getElementById("buttonRooms").classList.add("disabled");
+        };
+    }
     </script>
 </body>
 

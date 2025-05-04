@@ -138,7 +138,7 @@ if ($stmt = $con->prepare("INSERT INTO files (id, code, name, deletion) VALUES (
         <div>
             Made with ❤️ in Germany
             <span>&CenterDot;</span>
-            <a href="https://protzen-it.de/impressum-ext/">Impressum</a>
+            <a href="https://protzen-it.de/impressum-ext/" target="_blank">Impressum</a>
             <span>&CenterDot;</span>
             <a href="/legal/datenschutz">Datenschutzerkl&auml;rung</a>
             <span>&CenterDot;</span>
