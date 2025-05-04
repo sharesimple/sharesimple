@@ -138,7 +138,7 @@ if ($stmt = $con->prepare("INSERT INTO files (id, code, name, deletion) VALUES (
         <div>
             Made with ❤️ in Germany
             <span>&CenterDot;</span>
-            <a href="/legal/impressum">Impressum</a>
+            <a href="https://protzen-it.de/impressum-ext/">Impressum</a>
             <span>&CenterDot;</span>
             <a href="/legal/datenschutz">Datenschutzerkl&auml;rung</a>
             <span>&CenterDot;</span>
@@ -148,14 +148,14 @@ if ($stmt = $con->prepare("INSERT INTO files (id, code, name, deletion) VALUES (
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="/res/js/qrjs.js"></script>
     <script>
-    var qrcode = new QRCode("qrcode", {
-        colorDark: "#3f48cc",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.L
-    });
+        var qrcode = new QRCode("qrcode", {
+            colorDark: "#3f48cc",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.L
+        });
 
-    const text = "<?= $config["shorturl"] ?>/<?= $file_id ?>/<?= $code ?>";
-    qrcode.makeCode(text);
+        const text = "<?= $config["shorturl"] ?>/<?= $file_id ?>/<?= $code ?>";
+        qrcode.makeCode(text);
     </script>
 </body>
 
