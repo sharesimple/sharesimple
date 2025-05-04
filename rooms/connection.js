@@ -16,6 +16,12 @@ function connectWebSocket(roomId) {
     websocket.onopen = () => {
         console.log('WebSocket connected.');
         websocket.send(JSON.stringify({ type: 'joinRoom', payload: { roomId } }));
+        // Create keep-alive interval
+        setInterval(() => {
+            if (websocket.readyState === WebSocket.OPEN) {
+                websocket.send(JSON.stringify({ type: 'ping' }));
+            }
+        }, 20000);
     };
 
     websocket.onmessage = event => {
