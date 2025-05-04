@@ -5,7 +5,7 @@ let fileInput;
 let readyStateDisplay;
 let readyStateIcon;
 let receivedFilesDisplay;
-let shareButton;
+let broadcastButton;
 
 function connectWebSocket(roomId) {
     // If a WebSocket connection already exists, close it
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     readyStateDisplay = document.getElementById('readyState');
     readyStateIcon = document.getElementById('readyStateIcon');
     receivedFilesDisplay = document.getElementById('receivedFiles');
-    shareButton = document.getElementById('shareButton');
+    broadcastButton = document.getElementById('broadcastButton');
 
     // Check for ?id query parameter in the URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fileInput) {
         fileInput.addEventListener('change', sendFile);
     }
-    if (shareButton) {
-        shareButton.addEventListener('click', () => fileInput.click());
+    if (broadcastButton) {
+        broadcastButton.addEventListener('click', () => fileInput.click());
     }
 });
