@@ -39,9 +39,11 @@ function connectWebSocket(roomId) {
                 clients = payload.clients;
                 readyStateDisplay.textContent = 'Ready! You are connected to ' + (clients - 1) + ' other ' + (clients > 2 ? 'users' : 'user') + '.';
                 readyStateIcon.classList.add('ready');
+                broadcastButton.disabled = false;
             } else if (type === 'notReady') {
                 readyStateDisplay.textContent = 'Not Ready. Waiting for another user.';
                 readyStateIcon.classList.remove('ready');
+                broadcastButton.disabled = true;
             } else if (type === 'file') {
                 // Basic display of received file data (you'll need to handle binary data properly)
                 const receivedData = payload.data;
@@ -69,12 +71,14 @@ function connectWebSocket(roomId) {
         console.log('WebSocket connection closed.');
         readyStateDisplay.textContent = 'Disconnected from server.';
         readyStateIcon.classList.remove('ready');
+        broadcastButton.disabled = true;
     };
 
     websocket.onerror = error => {
         console.error('WebSocket error:', error);
         readyStateDisplay.textContent = 'Error connecting to server.';
         readyStateIcon.classList.remove('ready');
+        broadcastButton.disabled = true;
     };
 }
 
