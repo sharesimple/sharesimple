@@ -62,11 +62,13 @@ function connectWebSocket(roomId) {
     websocket.onclose = () => {
         console.log('WebSocket connection closed.');
         readyStateDisplay.textContent = 'Disconnected from server.';
+        readyStateIcon.classList.remove('ready');
     };
 
     websocket.onerror = error => {
         console.error('WebSocket error:', error);
         readyStateDisplay.textContent = 'Error connecting to server.';
+        readyStateIcon.classList.remove('ready');
     };
 }
 
