@@ -68,7 +68,7 @@ if (!preg_match("/^[0-9]{4}$/", $file_id)) {
         <div>
             Made with ❤️ in Germany
             <span>&CenterDot;</span>
-            <a href="/legal/impressum">Impressum</a>
+            <a href="https://protzen-it.de/impressum-ext/" target="_blank">Impressum</a>
             <span>&CenterDot;</span>
             <a href="/legal/datenschutz">Datenschutzerkl&auml;rung</a>
             <span>&CenterDot;</span>
